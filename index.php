@@ -50,6 +50,28 @@
                         echo draw_calendar($month,$year);
                     ?>
                 </div>
+
+                <div id ="form">
+                    <h3>Form Peminjaman</h3>
+                    <form name ='form_peminjaman' action='' method = 'post'>
+                        <h5>Nama Peminjam :</h5>
+                        <input type = 'text' name = 'nama' placeholder = 'Nama Peminjam'/>
+                        <h5>Civitas :</h5>
+                        <select name = 'civitas'>
+                            <option value="Mahasiswa">Mahasiswa</option>
+                            <option value="Dosen">Dosen</option>
+                            <option value="Institusi">Institusi</option>
+                        </select>
+                        <h5>Nama Alat :</h5>
+                        <select name = 'alat'>
+                            <option value="1 Microphone">1 Microphone</option>
+                        </select>
+                        <h5>Tanggal Peminjaman :</h5>
+
+                        <h5>Rencana Pengembalian :</h5>
+                        <input class = 'button' id='button_post' type = 'submit' value='Kirim'/>
+                    </form>
+                </div>
             </div>
     </body>
 </html>
