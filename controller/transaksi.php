@@ -21,10 +21,12 @@
                 }
 
                 if(mysqli_query($conn,$sql)) {
-                    header("../index.php");
+                    echo "Data anda berhasil disimpan";
+                    echo '<a href="../index.php"> Kembali ke halaman Transaksi</a>';
                 }
                 else {
                     echo mysqli_error($conn);
+                    echo '<a href="../index.php"> Kembali ke halaman Transaksi</a>';
                 }
             }
         }
