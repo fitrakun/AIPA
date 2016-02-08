@@ -14,30 +14,7 @@
     <body>
         <div id = "container">
             <div id  = "header">
-                <nav class="navbar navbar-default navbar-fixed-top">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="#">AIPA</a>
-                        </div>
-                        <ul class="nav navbar-nav">
-                          <li><a href="">Transaksi</a></li>
-                          <li><a href="#">Pengembalian</a></li>
-                          <li><a href="#">Perbaikan</a></li>
-                          <li><a href="peralatan.php">Peralatan</a></li>
-                          <li><a href="#">Statistik</a></li>
-                          <li><a href="#">Pengguna</a></li>
-                        </ul>
-                        <div class="nav navbar-header navbar-right">
-                            <ul class="span1 nama">
-                                <li><a href="#">Pipin</a></li>
-                                <li><a href="#" class="small8">Admin Duktek</a></li>
-                            </ul>
-                        </div>
-                        <div class="navbar-right">
-                            <img class="ava" src="img/ava.png">
-                        </div>
-                    </div>
-                </nav>
+                <?php require_once 'navigation_bar.php'?>
             </div>
 
             <div id="content">
@@ -55,14 +32,8 @@
                 <div id ="form">
                     <h3>Form Peminjaman</h3>
                     <form name ='form_peminjaman' action='controller/transaksi.php' method = 'post'>
-                        <h5>Nama Peminjam :</h5>
-                        <input type = 'text' name = 'nama' placeholder = 'Nama Peminjam'/>
-                        <h5>Civitas :</h5>
-                        <select name = 'civitas'>
-                            <option value="Mahasiswa">Mahasiswa</option>
-                            <option value="Dosen">Dosen</option>
-                            <option value="Institusi">Institusi</option>
-                        </select>
+                        <h5>ID Peminjam :</h5>
+                        <input type = 'text' name = 'id' placeholder = 'NIM / NIK Peminjam'/>
                         <h5>Kode Alat :</h5>
                         <input type = 'text' name = 'kode-alat' placeholder = 'Kode Alat'/>
                         <h5>Tanggal Peminjaman :</h5>
