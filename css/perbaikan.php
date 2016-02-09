@@ -16,35 +16,11 @@
                 <?php require_once 'navigation_bar.php'?>
             </div>
             <div id="content">
-                <div id="list">
-                    <h3 class="span1">List Peralatan</h3>
-                    <div class="s-alat">
-                        <form name ='form_peminjaman' action='' method = 'post'>
-                            <div class="form-group">
-                                <label for="namaalat" class="span1">Nama Alat</h5>
-                                <div class="form-inline">
-                                    <input id="namaalat" class="span1 form-control" type = 'text' name = 'namaalat' placeholder = 'Nama Alat'/>
-                                    <input class='span1 btn btn-default' id='button_post' type='submit' value="Cari"/>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID Alat</th>
-                                <th>Nama Alat</th>
-                                <th>Status</th>
-                                <th>Lokasi</th>
-                            </tr>
-                            <tbody> 
-                            </tbody>
-                        </thead>
-                    </table>
-                </div>
                 <div id="form">
-                    <h3>Tambah Peralatan</h3>
-                    <form name ='form_peralatan' action='controller/peralatan.php' method = 'post'>
+                    <h3>Form Perbaikan</h3>
+                    
+                    <h4>Detail Alat</h4>
+                    <form name ='form_perbaikan' action='controller/perbaikan.php' method = 'post'>
                         <h5>ID Alat</h5>
                         <input id="idalat" class="span4 form-control" type = 'text' name = 'idalat' placeholder = 'ID Alat'/>
                         <h5>Nama Alat</h5>
