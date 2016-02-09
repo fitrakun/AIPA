@@ -16,21 +16,48 @@
                 <?php require_once 'navigation_bar.php'?>
             </div>
             <div id="content">
-                <div id="form">
-                    <h3>Form Perbaikan</h3>
-                    <h4>Detail Alat</h4>
+                <div class="col-sm-3">
+                    <h3><b>Form Perbaikan</b></h3>
+                    <h4><b>Detail Alat</b></h4>
                     <form name ='form_perbaikan' action='controller/perbaikan.php' method = 'post'>
                         <h5>ID Alat</h5>
-                        <input id="idalat" class="span4 form-control" type = 'text' name = 'idalat' placeholder = 'ID Alat'/>
-                        <h5>Nama Alat</h5>
-                        <input id="namaalat" class="span4 form-control" type = 'text' name = 'namaalat' placeholder = 'Nama Alat'/>
-                        <h5>Status</h5>
-                        <input id="status" class="span4 form-control" type = 'text' name = 'status' placeholder = 'Status'/>
-                        <h5>Lokasi</h5>
-                        <input id="idalat" class="span4 form-control" type = 'text' name = 'idalat' placeholder = 'ID Alat'/>
-                        <input class='span1 btn btn-default btn-add' id='button_post' type='submit' value="Tambahkan"/>
+                        <input id="idalat" class="span4 form-control" type = 'text' name = 'idalat' placeholder = 'ID Alat'/><br/>
+
+                        <h4><b>Detail Teknisi</b></h4>
+                        <h5>Nama Institusi</h5>
+                            <input id="institusi" class="span4 form-control" type = 'text' name = 'institusi' placeholder = "ex: Bengkel Wilhelm"/>
+                        <h5>Nomor Telepon</h5>
+                            <input id="telepon" class="span4 form-control" type = 'text' name = 'telepon' placeholder = 'ex: 089999999999'/>
+                        <h5>Tanggal Mulai Perbaikan :</h5>
+                            <input type="datetime-local" name="mulai-perbaikan" />
+                        <h5>Estimasi Selesai Perbaikan :</h5>
+                            <input type="datetime-local" name="estimasi" />
+                        <br/>
+                        <input class = 'button' id='button_post' type = 'submit' name='kirim' value='Kirim'/>
                     </form>
                 </div>
+
+               <div class="col-sm-9 list">
+                    <h3><b>List Perbaikan</b></h3>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID Alat</th>
+                                <th>Nama Institusi</th>
+                                <th>Nomor Telepon</th>
+                                <th>Tanggal Perbaikan</th>
+                                <th>Estimasi Pengembalian</th>
+                                <th>Pengembalian</th>
+                            </tr>
+                        </thead>
+                            <tbody> 
+                                
+
+
+                            </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </body>
