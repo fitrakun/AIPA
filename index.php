@@ -19,22 +19,35 @@
 
             <div id="content">
                 <div id = "calendar">
-                    <form name = 'form_navigasi' action="index.php" method ='POST'>
-                        <div class = "form-inline">
-                            <input class = "span4 form-control" type ='text' name = 'month' placeholder="bulan"/>
-                            <input class = "span4 form-control" type ='text' name = 'year' placeholder="tahun"/>
-                            <input class = "span4 form-control" type ='text' name = 'alat' placeholder="nama alat"/>
-                            <input class = 'span4 form-control button' name = 'refresh' type = 'submit' value = 'Refresh'/>
-                        </div>
-                    </form>
                     <?php
                     require 'controller/calendar.php';
                     $month = date("m");
                     $Month = date("M");
                     $year = date("Y");
                     $alat = 'Microphone';
+                    ?>
+                    <form name = 'form_navigasi' action="index.php" method ='POST'>
+                        <div class = "form-inline">
+                            <select class = "span4 form-control" name = 'month'>
+                                <option value="1">Jan</option><option selected = "selected" value="2">Feb</option><option value="3">Mar</option>
+                                <option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option>
+                                <option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option>
+                                <option value="4">Oct</option><option value="10">Nov</option><option value="12">Dec</option>
+                            </select>
+                            <select class = "span4 form-control" name = 'year'>
+                                <option value="<?php echo $year-2 ?>"><?php echo $year-2 ?></option>
+                                <option value="<?php echo $year-1 ?>"><?php echo $year-1 ?></option>
+                                <option selected = "selected" value="<?php echo $year ?>"><?php echo $year ?></option>
+                                <option value="<?php echo $year+1 ?>"><?php echo $year+1 ?></option>
+                                <option value="<?php echo $year+2 ?>"><?php echo $year+2 ?></option>
+                            </select>
+                            <input class = "span4 form-control" type ='text' name = 'alat' placeholder="nama alat"/>
+                            <input class = 'span4 form-control button' name = 'refresh' type = 'submit' value = 'Refresh'/>
+                        </div>
+                    </form>
+                    <?php
                     if(isset($_POST['refresh'])) {
-                        $month = intval($_POST['month']);
+                        $month = $_POST['month'];
                         $Month = getMonthString($_POST['month']);
                         $year = $_POST['year'];
                         $alat = $_POST['alat'];
