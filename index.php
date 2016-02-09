@@ -28,6 +28,7 @@
                     ?>
                     <form name = 'form_navigasi' action="index.php" method ='POST'>
                         <div class = "form-inline">
+                            <h4>Pencarian Ketersediaan Alat</h4>
                             <select class = "span4 form-control" name = 'month'>
                                 <option value="1">Jan</option><option selected = "selected" value="2">Feb</option><option value="3">Mar</option>
                                 <option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option>
@@ -54,6 +55,7 @@
                     }
 
                     echo '<h2>' . $Month . ' ' . $year . '</h2>';
+                    echo '<h4>Nama Alat : ' .$alat. '</h4>';
                     echo draw_calendar($month, $year, $alat);
                     ?>
                 </div>
