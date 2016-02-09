@@ -14,7 +14,7 @@
     <body>
         <div id = "container">
             <div id  = "header">
-                <?php $page = 'index'; require_once 'navigation_bar.php'?>
+                <?php require_once 'navigation_bar.php'?>
             </div>
 
             <div id="content">
