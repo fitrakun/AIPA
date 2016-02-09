@@ -19,13 +19,29 @@
 
             <div id="content">
                 <div id = "calendar">
+                    <form name = 'form_navigasi' action="index.php" method ='POST'>
+                        <div class = "form-inline">
+                            <input class = "span4 form-control" type ='text' name = 'month' placeholder="bulan"/>
+                            <input class = "span4 form-control" type ='text' name = 'year' placeholder="tahun"/>
+                            <input class = "span4 form-control" type ='text' name = 'alat' placeholder="nama alat"/>
+                            <input class = 'span4 form-control button' name = 'refresh' type = 'submit' value = 'Refresh'/>
+                        </div>
+                    </form>
                     <?php
-                        require 'controller/calendar.php';
-                        $month = date("m");
-                        $Month = date("M");
-                        $year = date("Y");
-                        echo '<h2>'.$Month.' '.$year.'</h2>';
-                        echo draw_calendar($month,$year);
+                    require 'controller/calendar.php';
+                    $month = date("m");
+                    $Month = date("M");
+                    $year = date("Y");
+                    $alat = 'Microphone';
+                    if(isset($_POST['refresh'])) {
+                        $month = intval($_POST['month']);
+                        $Month = getMonthString($_POST['month']);
+                        $year = $_POST['year'];
+                        $alat = $_POST['alat'];
+                    }
+
+                    echo '<h2>' . $Month . ' ' . $year . '</h2>';
+                    echo draw_calendar($month, $year, $alat);
                     ?>
                 </div>
 
