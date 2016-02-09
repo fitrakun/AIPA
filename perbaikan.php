@@ -1,3 +1,17 @@
+<?php
+    include "controller/config.php";
+    $conn = connect_database();
+    
+    $namaalat = mysql_real_escape_string($_POST['namaalat2']);
+    if(isset($_POST["cari"])) {
+        $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi` WHERE `tanggal_selesai_perbaikan` IS NOT NULL AND nama_alat = '.$namaalat.'";
+    } else {
+        $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi`";
+    }
+
+    $result = mysqli_query($conn, $sql);
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,9 +33,9 @@
                 <div class="col-sm-3">
                     <h3><b>Form Perbaikan</b></h3>
                     <h4><b>Detail Alat</b></h4>
-                    <form name ='form_perbaikan' action='controller/perbaikan.php' method = 'post'>
+                    <form name ='form_perbaikan' action="controller/perbaikan.php" method = 'post'>
                         <h5>ID Alat</h5>
-                        <input id="idalat" class="span4 form-control" type = 'text' name = 'idalat' placeholder = 'ID Alat'/><br/>
+                        <input id="idalat" class="span4 form-control" type = 'text' name = 'id' placeholder = 'ID Alat'/><br/>
 
                         <h4><b>Detail Teknisi</b></h4>
                         <h5>Nama Institusi</h5>
@@ -29,7 +43,7 @@
                         <h5>Nomor Telepon</h5>
                             <input id="telepon" class="span4 form-control" type = 'text' name = 'telepon' placeholder = 'ex: 089999999999'/>
                         <h5>Tanggal Mulai Perbaikan :</h5>
-                            <input type="datetime-local" name="mulai-perbaikan" />
+                            <input type="datetime-local" name="mulai_perbaikan" />
                         <h5>Estimasi Selesai Perbaikan :</h5>
                             <input type="datetime-local" name="estimasi" />
                         <br/>
@@ -37,8 +51,19 @@
                     </form>
                 </div>
 
-               <div class="col-sm-9 list">
+               <div class="col-sm-11 list">
                     <h3><b>List Perbaikan</b></h3>
+                    <div class="s-alat">
+                        <form name ='form_peralatan' action="controller/perbaikan.php; ?>" method = 'post'>
+                            <div class="form-group">
+                                <label for="namaalat" class="span1">Nama Alat</label>
+                                <div class="form-inline">
+                                    <input id="namaalat2" class="span1 form-control" type = 'text' name = 'namaalat2' placeholder = 'Nama Alat'/>
+                                    <input class='span1 btn btn-default' id='button_post' type='submit' name="cari" value="Cari"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -51,9 +76,13 @@
                             </tr>
                         </thead>
                             <tbody> 
-                                
-
-
+                                <?php 
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<tr> <td>" . $row["id_alat"] . "</td> <td>" . $row["nama_institusi"] . "</td> <td>" . $row["nomor_telepon"] . "</td> <td>" . $row ["tanggal_mulai_perbaikan"] . "</td></tr>" . "</td> <td>" . $row ["estimasi_selesai_perbaikan"] . "</td></tr>";
+                                    }
+                                }
+                                ?>
                             </tbody>
                     </table>
                 </div>
