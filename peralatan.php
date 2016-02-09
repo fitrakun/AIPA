@@ -52,11 +52,6 @@
                                 <th>Status</th>
                                 <th>Lokasi</th>
                             </tr>
-<<<<<<< HEAD
-=======
-                            <tbody> 
-                            </tbody>
->>>>>>> f2146ca2ce530c6166d85c4fc1c86ec921cb1874
                         </thead>
                             <tbody> 
                                 <?php
@@ -79,7 +74,6 @@
                         <h5>Nama Alat</h5>
                         <input id="namaalat" class="span4 form-control" type = 'text' name = 'namaalat' placeholder = 'Nama Alat'/>
                         <h5>Status</h5>
-<<<<<<< HEAD
                             <select class="form-control" name="status" id="status">
                                 <option value="normal">normal</option>
                                 <option value="rusak">rusak</option>
@@ -87,12 +81,6 @@
                         <h5>Lokasi</h5>
                         <input id="lokasi" class="span4 form-control" type = 'text' name = 'lokasi' placeholder = 'Lokasi'/>
                         <input class='span1 btn btn-default btn-add' id='button_post' type='submit' value="Tambahkan" name="Tambahkan"/>
-=======
-                        <input id="status" class="span4 form-control" type = 'text' name = 'status' placeholder = 'Status'/>
-                        <h5>Lokasi</h5>
-                        <input id="idalat" class="span4 form-control" type = 'text' name = 'idalat' placeholder = 'ID Alat'/>
-                        <input class='span1 btn btn-default btn-add' id='button_post' type='submit' value="Tambahkan"/>
->>>>>>> f2146ca2ce530c6166d85c4fc1c86ec921cb1874
                     </form>
                 </div>
             </div>
