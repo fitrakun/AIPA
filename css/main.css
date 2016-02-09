@@ -113,18 +113,10 @@ select{
     padding-top : 50px;
     margin-left: 10px;
 }
-<<<<<<< HEAD
+
 .list{
     margin-top: 15px;
 }
-=======
->>>>>>> f2146ca2ce530c6166d85c4fc1c86ec921cb1874
-.btn-add{
-    margin-top: 15px;
-    margin-left: 53px;
-}
-<<<<<<< HEAD
-=======
 
 ::-webkit-input-placeholder {
    font-style: italic;
@@ -138,4 +130,3 @@ select{
 :-ms-input-placeholder {  
    font-style: italic; 
 }
->>>>>>> f2146ca2ce530c6166d85c4fc1c86ec921cb1874
