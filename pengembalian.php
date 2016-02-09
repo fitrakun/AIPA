@@ -16,19 +16,20 @@
             <div id  = "header">
                 <?php $page = 'index'; require_once 'navigation_bar.php'?>
             </div>
+            <?php
+                require_once 'controller/peralatan.php'; 
+                $results = queryNamaAlat();
+            ?>
+            <select name="nama_alat" form="alat">
+                <?php foreach($results as $result) : ?>
+                    <option value="<?php echo $result['nama_alat']; ?>"><?php echo $result['nama_alat']; ?></option>
+                <?php endforeach; ?>
+            </select>
+            <form name ='nama_alat' action='controller/pengembalian.php' method = 'post'>
+                <input class = 'button' id='button_post' type = 'submit' name='cari' value='Kirim'/>
+            </form>
 
-            <div id="content">
-                <div id = "calendar">
-                    <?php
-                        require 'controller/calendar.php';
-                        $month = date("m");
-                        $Month = date("M");
-                        $year = date("Y");
-                        echo '<h2>'.$Month.' '.$year.'</h2>';
-                        echo draw_calendar($month,$year);
-                    ?>
-                </div>
-            </div>
+
         </div>
     </body>
 </html>

@@ -113,7 +113,20 @@ select{
     padding-top : 50px;
     margin-left: 10px;
 }
-.btn-add{
+
+.list{
     margin-top: 15px;
-    margin-left: 53px;
+}
+
+::-webkit-input-placeholder {
+   font-style: italic;
+}
+:-moz-placeholder {
+   font-style: italic;  
+}
+::-moz-placeholder {
+   font-style: italic;  
+}
+:-ms-input-placeholder {  
+   font-style: italic; 
 }
