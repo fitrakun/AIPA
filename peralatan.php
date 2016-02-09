@@ -1,3 +1,17 @@
+<?php 
+        include "controller/config.php";
+        $conn = connect_database();
+        $namaalat = mysql_real_escape_string($_POST['namaalat2']);        
+        if(isset($_POST["Cari"]))
+        {
+            echo "TEST";
+            $sql = "SELECT * FROM `alat` WHERE nama_alat LIKE '%" . $namaalat . "%';";
+            
+        }
+        else
+            $sql="SELECT * FROM `alat`";
+        $result = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,46 +27,24 @@
     <body>
         <div id="container">
             <div id="header">
-                <nav class="navbar navbar-default navbar-fixed-top">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="#">AIPA</a>
-                        </div>
-                        <ul class="nav navbar-nav">
-                          <li><a href="#">Peminjaman</a></li>
-                          <li><a href="#">Pengembalian</a></li>
-                          <li><a href="#">Booking</a></li>
-                          <li><a href="#">Perbaikan</a></li>
-                          <li class="active"><a href="peralatan.php">Peralatan</a></li>
-                          <li><a href="#">Statistik</a></li>
-                        </ul>
-                        <div class="nav navbar-header navbar-right">
-                            <ul class="span1 nama">
-                                <li><a href="#">Pipin</a></li>
-                                <li><a href="#" class="small8">Admin Duktek</a></li>
-                            </ul>
-                        </div>
-                        <div class="navbar-right">
-                            <img class="ava" src="img/ava.png">
-                        </div>
-                    </div>
-                </nav>
+                <?php require_once 'navigation_bar.php'?>
             </div>
             <div id="content">
-                <div id="list">
+                <div class="col-sm-9 list">
                     <h3 class="span1">List Peralatan</h3>
                     <div class="s-alat">
-                        <form name ='form_peminjaman' action='' method = 'post'>
+                        <form name ='form_peralatan' action='<?php echo $_SERVER['PHP_SELF'];?>' method = 'post'>
                             <div class="form-group">
-                                <label for="namaalat" class="span1">Nama Alat</h5>
+                                <label for="namaalat" class="span1">Nama Alat</label>
                                 <div class="form-inline">
-                                    <input id="namaalat" class="span1 form-control" type = 'text' name = 'namaalat' placeholder = 'Nama Alat'/>
-                                    <input class='span1 btn btn-default' id='button_post' type='submit' value="Cari"/>
+                                    <input id="namaalat2" class="span1 form-control" type = 'text' name = 'namaalat2' placeholder = 'Nama Alat'/>
+                                    <input class='span1 btn btn-default' id='button_post' type='submit' name="Cari" value="Cari"/>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <table class="table">
+                    
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>ID Alat</th>
@@ -60,15 +52,36 @@
                                 <th>Status</th>
                                 <th>Lokasi</th>
                             </tr>
-                            <tbody>
-                                
-                            </tbody>
                         </thead>
+                            <tbody> 
+                                <?php
+                                if ($result->num_rows > 0)
+                                {
+                                    while ($row = $result->fetch_assoc())
+                                    {
+                                        echo "<tr> <td>" . $row["id_alat"] . "</td> <td>" . $row["nama_alat"] . "</td> <td>" . $row["status"] . "</td> <td>" . $row ["lokasi"] . "</td></tr>";
+                                    }
+                                }
+                                ?>
+                            </tbody>
                     </table>
                 </div>
-                <div id="form">
+                <div class="col-sm-3">
                     <h3>Tambah Peralatan</h3>
-                    
+                    <form name ='form_peralatan' action='controller/peralatan.php' method = 'post'>
+                        <h5>ID Alat</h5>
+                        <input id="idalat" class="span4 form-control" type = 'text' name = 'idalat' placeholder = 'ID Alat'/>
+                        <h5>Nama Alat</h5>
+                        <input id="namaalat" class="span4 form-control" type = 'text' name = 'namaalat' placeholder = 'Nama Alat'/>
+                        <h5>Status</h5>
+                            <select class="form-control" name="status" id="status">
+                                <option value="normal">normal</option>
+                                <option value="rusak">rusak</option>
+                            </select>
+                        <h5>Lokasi</h5>
+                        <input id="lokasi" class="span4 form-control" type = 'text' name = 'lokasi' placeholder = 'Lokasi'/>
+                        <input class='span1 btn btn-default btn-add' id='button_post' type='submit' value="Tambahkan" name="Tambahkan"/>
+                    </form>
                 </div>
             </div>
         </div>
