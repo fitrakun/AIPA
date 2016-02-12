@@ -1,23 +1,22 @@
 <?php
 
-    if(isset($_POST['cari'])) {
-       perbaikan();
-    }
     if(isset($_POST['kirim'])) {
-       
+       tambahPerbaikan();
     }
 
-	function perbaikan($nama) {
+	function perbaikan() {
 		include "config.php";
 		$conn = connect_database();
-
-        if(strcmp($nama, "semua")) {
-            $sql = "SELECT * FROM `perbaikan`";
+        
+        $namaalat = mysql_real_escape_string($_POST['namaalat2']);
+        if(isset($_POST["cari"])) {
+            $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi` WHERE `tanggal_selesai_perbaikan` IS NOT NULL AND nama_alat = '.$namaalat.'";
         } else {
-            $sql = "SELECT * FROM `alat` NATURAL JOIN `perbaikan` WHERE `tanggal_selesai_perbaikan` IS NOT NULL AND nama_alat = '.$nama.'";
+            $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi`";
         }
     
-        return mysqli_query($conn, $sql);
+        $result = mysqli_query($conn, $sql);
+        return $result;
 	}
 
     function queryNamaAlat() {
@@ -28,15 +27,15 @@
         return mysqli_query($conn, $sql);
     }
 
-    function tambahPerbaikan($id, $institusi, $nomor_telepon, $mulai_perbaikan, $estimasi) {
+    function tambahPerbaikan() {
         include "config.php";
         $conn = connect_database();
 
-        $sql1 = "INSERT INTO `teknisi` (`nama_institusi`, `nomor_telepon`) VALUES ('$_POST[institusi]', '$_POST[nomor_telepon]');";
-        $sql = "INSERT INTO `perbaikan` (`nama_institusi`, `id_alat`, `tanggal_mulai_perbaikan`, `tanggal_selesai_perbaikan`, `estimasi_selesai_perbaikan`) VALUES ('$_POST[institusi]', '$_POST[id]','$_POST[mulai_perbaikan]',NULL,'$_POST[estimasi]');";
+        $sql1 = "INSERT INTO `perbaikan` (`nama_institusi`, `id_alat`, `tanggal_mulai_perbaikan`, `tanggal_selesai_perbaikan`, `estimasi_selesai_perbaikan`) VALUES ('$_POST[institusi]', '$_POST[id]','$_POST[mulai_perbaikan]',NULL,'$_POST[estimasi]');";
+        $sql2 = "INSERT INTO `teknisi` (`nama_institusi`, `nomor_telepon`) VALUES ('$_POST[institusi]', '$_POST[telepon]');";
         if(mysqli_query($conn,$sql1) && mysqli_query($conn,$sql2)) {
             echo "Data anda berhasil disimpan";
-            echo '<a href="../perbaikan.php"> Kembali ke halaman Peralatan</a>';
+            echo "<script> window.open('index.php', '_self') </script>";
         }
         else {
             echo mysqli_error($conn);

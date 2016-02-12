@@ -146,7 +146,7 @@ function draw_calendar($month,$year,$alat){
     mysqli_free_result($result);
 
     //perbaikan
-    $result = mysqli_query($conn,"SELECT * FROM perbaikan NATURAL JOIN alat where nama_alat = '$alat' and ((year(tanggal_mulai_perbaikan)*12 + month(estimasi_selesai_perbaikan)) <= '$now') and ((year(tanggal_mulai_perbaikan)*12 + month(estimasi_selesai_perbaikan)) >= '$now')");
+    $result = mysqli_query($conn,"SELECT * FROM perbaikan NATURAL JOIN alat where nama_alat = '$alat' and ((year(tanggal_mulai_perbaikan)*12 + month(tanggal_mulai_perbaikan)) <= '$now') and ((year(estimasi_selesai_perbaikan)*12 + month(estimasi_selesai_perbaikan)) >= '$now')");
     if(mysqli_num_rows($result)>0){
         markdate($booked,$result,$days_in_month,$month,3);
     }
