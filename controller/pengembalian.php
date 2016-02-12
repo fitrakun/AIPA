@@ -1,29 +1,42 @@
 <?php
+
 	if(isset($_POST['cari'])) {
-	   cariAlat();
+	   cariAlat($_POST['nama_alat']);
 	}
-	else(isset($_POST['kirim'])) {
-
+	else if(isset($_POST['kirim'])) {
+		pengembalian();
 	}
 
-	function cariAlat($nama) {
-		include "config.php";
-		$conn = connect_database();
-
+	function cariAlat($conn, $nama) {
 		if(strcmp($nama, "semua")) {
-			$sql = "SELECT * FROM `peminjaman`";
+			$sql = "SELECT * FROM `peminjaman` NATURAL JOIN `user` NATURAL JOIN `alat` WHERE `tanggal_pengembalian` IS NULL";
 		}
 		else {
-			$sql = "SELECT * FROM `peminjaman` WHERE nama_alat = '.$nama.'";
+			$sql = "SELECT * FROM `peminjaman` NATURAL JOIN `user` NATURAL JOIN `alat` WHERE `tanggal_pengembalian` IS NULL AND nama_alat = '".$nama."'";
 		}
-		return mysqli_query($conn, $sql);
+		$results = mysqli_query($conn, $sql);
+		return $results;
 	}
 
-	function queryNamaAlat() {
+	function pengembalian($nama) {
 		include "config.php";
-		$conn = connect_database();
+        $conn = connect_database();
 
-		$sql = "SELECT DISTINCT `nama_alat` FROM `alat`";
-		return mysqli_query($conn, $sql);
+		$results = cariAlat($nama);
+		foreach($results as $result):
+			if(!empty($_POST["status"])) {
+				foreach($_POST["status"] as $id) {
+					$sql = "UPDATE `peminjaman` SET `tanggal_pengembalian` = NOW() WHERE `id_alat`=".$id;
+					if(mysqli_query($conn,$sql)) {
+						header("Location: ../pengembalian.php");
+						exit();
+					}
+					else {
+						echo mysqli_error($conn);
+					}
+				}
+			}
+		endforeach;	
 	}
+
 ?>
