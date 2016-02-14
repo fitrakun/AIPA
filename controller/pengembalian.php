@@ -1,6 +1,6 @@
 <?php
-	if(isset($_GET['kirim'])) {
-		pengembalian($_GET['nama']);
+	if(isset($_POST['kirim'])) {
+		pengembalian($_POST['nama']);
 	}
 
 	function cariAlat($conn, $nama) {
@@ -17,8 +17,8 @@
 	function pengembalian($nama) {
 		include "config.php";
         $conn = connect_database();
-		if(!empty($_GET["status"])) {
-			foreach($_GET["status"] as $status):
+		if(!empty($_POST["status"])) {
+			foreach($_POST["status"] as $status):
 				$pengembalian = explode("|", $status);
 				//foreach($pengembalian as $a) echo $a."|";
 				echo"<br>";
@@ -33,8 +33,11 @@
 					exit();
 				}
 			endforeach;
-			echo '<a href="../pengembalian.php"> Kembali ke halaman Pengembalian</a>';
 		}
+		else {
+			echo "Tidak ada peralatan yang dikembalikan.<br>";
+		}
+		echo '<a href="../pengembalian.php"> Kembali ke halaman Pengembalian</a>';
 	}
 
 ?>

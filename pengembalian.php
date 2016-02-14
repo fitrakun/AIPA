@@ -36,7 +36,7 @@
                 </div>
 
 
-                <form name="pengembalian" action="controller/pengembalian.php">
+                <form name="pengembalian" action="controller/pengembalian.php" method="post">
                     <table class="table table-hover">
                         <thead>
                             <tr>
