@@ -8,7 +8,7 @@
 	}
 
 	function cariAlat($conn, $nama) {
-		if(strcmp($nama, "semua")) {
+		if(strcmp($nama, "semua")||strcmp($nama, "")) {
 			$sql = "SELECT * FROM `peminjaman` NATURAL JOIN `user` NATURAL JOIN `alat` WHERE `tanggal_pengembalian` IS NULL";
 		}
 		else {

@@ -21,6 +21,8 @@
                     $conn = connect_database();
 
                     $results = queryNamaAlat($conn);
+
+                    mysqli_close($conn);
                 ?>
                 <div class="form-group form-group-sm">
                     <select class = "span4 form-control" name="nama_alat" form="alat">
@@ -50,6 +52,7 @@
                         </thead>
                         <?php 
                             require_once 'controller/pengembalian.php';
+                            $conn = connect_database();
                             if(isset($_GET['nama'])) {
                                $results = cariAlat($conn, $_GET['nama']);
                             } else {
@@ -58,7 +61,7 @@
                         ?>
                         <tbody>
                             <tr>
-                                <?php while($result = mysqli_fetch_assoc($results)) { ?>
+                                <?php foreach($results as $result) : ?>
                                 <td><?php echo $result['id_alat']; ?></td>
                                 <td><?php echo $result['nama_alat']; ?></td>
                                 <td><?php echo $result['nama_user']; ?></td>
@@ -66,7 +69,7 @@
                                 <td><?php echo $result['tanggal_peminjaman']; ?></td>
                                 <td><?php echo $result['tanggal_rencana_pengembalian']; ?></td>
                                 <td><input type="checkbox" name="status[]" value="<?php echo $result['id_user']."|".$result['id_alat']."|".$result['tanggal_peminjaman']; ?>"></td>
-                                <?php } ?>
+                                <?php endforeach; ?>
                             </tr>
                         </tbody>
                     </table>
