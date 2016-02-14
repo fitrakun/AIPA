@@ -76,13 +76,17 @@
                             </tr>
                         </thead>
                             <tbody> 
-                                <?php 
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo "<tr> <td>" . $row["id_alat"] . "</td> <td>" . $row["nama_institusi"] . "</td> <td>" . $row["nomor_telepon"] . "</td> <td>" . $row ["tanggal_mulai_perbaikan"] . "</td></tr>" . "</td> <td>" . $row ["estimasi_selesai_perbaikan"] . "</td></tr>";
-                                    }
-                                }
-                                ?>
+                            	<?php foreach($result as $res) : ?>
+	                            <tr>
+	                                <td><?php echo $res['id_alat']; ?></td>
+	                        		<td><?php echo $res['nama_institusi']; ?></td>
+	                                <td><?php echo $res['nomor_telepon']; ?></td>
+	                                <td><?php echo $res['tanggal_mulai_perbaikan']; ?></td>
+	                                <td><?php echo $res['estimasi_selesai_perbaikan']; ?></td>
+	               					<td align="center"><input type="checkbox" name="status[]" value=""></td>
+	                            </tr>
+	                            <?php endforeach; ?>
+                                
                             </tbody>
                     </table>
                 </div>
