@@ -1,14 +1,10 @@
 <?php
-
-	if(isset($_POST['cari'])) {
-	   cariAlat($_POST['nama_alat']);
-	}
-	else if(isset($_POST['kirim'])) {
-		pengembalian();
+	if(isset($_GET['kirim'])) {
+		pengembalian($_GET['nama']);
 	}
 
 	function cariAlat($conn, $nama) {
-		if(strcmp($nama, "semua")||strcmp($nama, "")) {
+		if(strcmp($nama, "semua")==0) {
 			$sql = "SELECT * FROM `peminjaman` NATURAL JOIN `user` NATURAL JOIN `alat` WHERE `tanggal_pengembalian` IS NULL";
 		}
 		else {
@@ -21,22 +17,24 @@
 	function pengembalian($nama) {
 		include "config.php";
         $conn = connect_database();
-
-		$results = cariAlat($nama);
-		foreach($results as $result):
-			if(!empty($_POST["status"])) {
-				foreach($_POST["status"] as $id) {
-					$sql = "UPDATE `peminjaman` SET `tanggal_pengembalian` = NOW() WHERE `id_alat`=".$id;
-					if(mysqli_query($conn,$sql)) {
-						header("Location: ../pengembalian.php");
-						exit();
-					}
-					else {
-						echo mysqli_error($conn);
-					}
+		if(!empty($_GET["status"])) {
+			foreach($_GET["status"] as $status):
+				$pengembalian = explode("|", $status);
+				//foreach($pengembalian as $a) echo $a."|";
+				echo"<br>";
+				$sql = "UPDATE `peminjaman` SET `tanggal_pengembalian` = NOW() WHERE `id_user`=".$pengembalian[0].
+					" AND `id_alat`='".$pengembalian[1]."' AND `tanggal_peminjaman`='".$pengembalian[2]."'";
+				//echo $sql."<br>";
+				if(mysqli_query($conn,$sql)) {
+					echo "Pengembalian peralatan dengan ID ".$pengembalian[1]." dengan tanggal peminjaman ".$pengembalian[2]." berhasil dilakukan.<br>";
 				}
-			}
-		endforeach;	
+				else {
+					echo mysqli_error($conn)."<br>";
+					exit();
+				}
+			endforeach;
+			echo '<a href="../pengembalian.php"> Kembali ke halaman Pengembalian</a>';
+		}
 	}
 
 ?>
