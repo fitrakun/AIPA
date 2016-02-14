@@ -21,21 +21,22 @@
                     $conn = connect_database();
 
                     $results = queryNamaAlat($conn);
+
+                    mysqli_close($conn);
                 ?>
                 <div class="form-group form-group-sm">
-                    <select class = "span4 form-control" name="nama_alat" form="alat">
-                        <?php foreach($results as $result) : ?>
-                            <option value="<?php echo $result['nama_alat']; ?>"><?php echo $result['nama_alat']; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    
-                    <form name ='nama_alat' action='controller/pengembalian.php' method = 'post'>
-                        <input  class = 'span4 form-control button' id='button_post' type = 'submit' name='cari' value='cari'/>
+                    <form name ='nama_alat' action='pengembalian.php' method = 'get'>
+                        <select class = "span4 form-control" name="nama">
+                            <?php foreach($results as $result) : ?>
+                                <option value="<?php echo $result['nama_alat']; ?>"><?php echo $result['nama_alat']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <input  class = 'span4 form-control button' id='button_post' type = 'submit' value='cari'/>
                     </form>
                 </div>
 
 
-                <form name="pengembalian" action="controller/pengembalian.php">
+                <form name="pengembalian" action="controller/pengembalian.php" method="post">
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -50,15 +51,17 @@
                         </thead>
                         <?php 
                             require_once 'controller/pengembalian.php';
+                            $conn = connect_database();
                             if(isset($_GET['nama'])) {
+                                echo $_GET['nama'];
                                $results = cariAlat($conn, $_GET['nama']);
                             } else {
                                 $results = cariAlat($conn, "semua"); 
                             }
                         ?>
                         <tbody>
+                            <?php foreach($results as $result) : ?>
                             <tr>
-                                <?php while($result = mysqli_fetch_assoc($results)) { ?>
                                 <td><?php echo $result['id_alat']; ?></td>
                                 <td><?php echo $result['nama_alat']; ?></td>
                                 <td><?php echo $result['nama_user']; ?></td>
@@ -66,11 +69,12 @@
                                 <td><?php echo $result['tanggal_peminjaman']; ?></td>
                                 <td><?php echo $result['tanggal_rencana_pengembalian']; ?></td>
                                 <td><input type="checkbox" name="status[]" value="<?php echo $result['id_user']."|".$result['id_alat']."|".$result['tanggal_peminjaman']; ?>"></td>
-                                <?php } ?>
                             </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
-                    <input class = 'button' id='button_post' type = 'submit' name='kirim' value='Kirim'/>
+                    <input type="hidden" name="nama" value="<?php if(isset($_GET['nama'])) echo $_GET['nama']; else echo "semua";?>">
+                    <input class = 'btn btn-default' id='button_post' type = 'submit' name="kirim" value='Kirim'/>
                 </form>
             </div>
         </div>
