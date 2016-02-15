@@ -1,10 +1,11 @@
 function validateDate() {
+	var currentTime = new Date();
 	if(document.forms["form_peminjaman"]["tanggal-pinjam"].value=="")
-		var startTime = new Date();
+		var startTime = currentTime;
 	else
 		var startTime = new Date(document.forms["form_peminjaman"]["tanggal-pinjam"].value);
 	var finishTime = new Date(document.forms["form_peminjaman"]["tanggal-kembali"].value);
-	var currentTime = new Date();
+	
 	if(startTime < currentTime) {
 		alert("Tanggal minimal peminjaman adalah hari ini");
 	}
