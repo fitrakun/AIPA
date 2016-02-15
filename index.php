@@ -73,9 +73,9 @@
                     <h3>Form Peminjaman</h3>
                     <form name ='form_peminjaman' action='controller/transaksi.php' method = 'post'>
                         <h5>ID Peminjam :</h5>
-                        <input type = 'text' class="form-control" name = 'id' placeholder = 'NIM / NIK Peminjam'/>
+                        <input type = 'number' min='0' name = 'id' placeholder = 'NIM / NIK Peminjam'/>
                         <h5>Kode Alat :</h5>
-                        <input type = 'text' class="form-control" name = 'kode-alat' placeholder = 'Kode Alat'/>
+                        <input type = 'text' pattern="[A-Z]{3}[0-9]{3}" name = 'kode-alat' placeholder = 'Kode Alat'/>
                         <h5>Tanggal Peminjaman :</h5>
                             <input id="tanggal-pinjam" class="form-control" disabled = "true" type="datetime-local" name="tanggal-pinjam" />
                         <h5>Rencana Pengembalian :</h5>

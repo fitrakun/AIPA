@@ -23,13 +23,13 @@
                     <h4><b>Detail Alat</b></h4>
                     <form name ='form_perbaikan' action="controller/perbaikan.php" method = 'post'>
                         <h5>ID Alat</h5>
-                        <input id="idalat" class="span4 form-control" type = 'text' name = 'id' placeholder = 'ID Alat'/><br/>
+                        <input id="idalat" pattern="[A-Z]{3}[0-9]{3}" class="span4 form-control" type = 'text' name = 'id' placeholder = 'ID Alat'/><br/>
 
                         <h4><b>Detail Teknisi</b></h4>
                         <h5>Nama Institusi</h5>
                             <input id="institusi" class="span4 form-control" type = 'text' name = 'institusi' placeholder = "ex: Bengkel Wilhelm"/>
                         <h5>Nomor Telepon</h5>
-                            <input id="telepon" class="span4 form-control" type = 'text' name = 'telepon' placeholder = 'ex: 089999999999'/>
+                            <input id="telepon" class="span4 form-control" type = 'number' min='0' name = 'telepon' placeholder = 'ex: 089999999999'/>
                         <h5>Estimasi Selesai Perbaikan :</h5>
                             <input type="datetime-local" name="estimasi" />
                         <br/>
