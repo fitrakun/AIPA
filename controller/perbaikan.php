@@ -3,31 +3,21 @@
     if(isset($_POST['kirim'])) {
        tambahPerbaikan();
     } else if (isset($_POST['update'])) {
-        //echo "masuk";
         pengembalian();
     }
 
-	function perbaikan() {
-		include "config.php";
-		$conn = connect_database();
-        
-        $namaalat = mysql_real_escape_string($_POST['namaalat2']);
-        if(isset($_POST["cari"])) {
-            $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi` WHERE `tanggal_selesai_perbaikan` IS NOT NULL AND `nama_alat` = '.$namaalat.'";
-        } else {
-            $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi`";
-        }
-    
-        $result = mysqli_query($conn, $sql);
-        return $result;
-	}
-
-    function queryNamaAlat() {
+    function cariAlat($conn, $nama) {
         include "config.php";
         $conn = connect_database();
 
-        $sql = "SELECT DISTINCT `nama_alat` FROM `alat`";
-        return mysqli_query($conn, $sql);
+        if(strcmp($nama, "semua")==0) {
+            $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi`";
+        }
+        else {
+            $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi` WHERE `tanggal_selesai_perbaikan` IS NOT NULL AND nama_alat = '".$namaalat."'";
+        }
+        $results = mysqli_query($conn, $sql);
+        return $results;
     }
 
     function tambahPerbaikan() {
@@ -35,7 +25,7 @@
         $conn = connect_database();
 
         $sql = "SELECT * FROM `teknisi` WHERE `nama_institusi`='".$_POST['institusi']."'";
-        $sql1 = "INSERT INTO `perbaikan` (`nama_institusi`, `id_alat`, `tanggal_mulai_perbaikan`, `estimasi_selesai_perbaikan`) VALUES ('$_POST[institusi]', '$_POST[id]','$_POST[mulai_perbaikan]','$_POST[estimasi]');";
+        $sql1 = "INSERT INTO `perbaikan` (`nama_institusi`, `id_alat`, `estimasi_selesai_perbaikan`) VALUES ('$_POST[institusi]', '$_POST[id]','$_POST[estimasi]');";
         $sql2 = "INSERT INTO `teknisi` (`nama_institusi`, `nomor_telepon`) VALUES ('$_POST[institusi]', '$_POST[telepon]');";
         $sql3 = "UPDATE `alat` SET `status`='".'rusak'. "' WHERE `id_alat`='".$_POST['id']."'";
 
@@ -47,7 +37,7 @@
                 echo "<script> window.open('../index.php', '_self') </script>";
             }
             else {
-                echo "usa";
+                echo "usa"; 
                 echo mysqli_error($conn);
                 echo '<a href="../perbaikan.php"> Kembali ke halaman Peralatan</a>';
             }
