@@ -81,8 +81,8 @@
                         <h5>Rencana Pengembalian :</h5>
                             <input type="datetime-local" class="form-control" name="tanggal-kembali" />
                         <br />
-                            <label class="radio-inline"><input type="radio" selected="selected" onclick="peminjaman()" name="jenis" value="peminjaman">Peminjaman</label>
-                            <label class="radio-inline"><input type="radio" name="jenis" onclick="booking()" value="booking" checked>Booking</label>
+                            <label class="radio-inline"><input type="radio" onclick="peminjaman()" name="jenis" value="peminjaman" checked>Peminjaman</label>
+                            <label class="radio-inline"><input type="radio" name="jenis" onclick="booking()" value="booking">Booking</label>
                         </br>
                         </br>
                         <input class = 'btn btn-default' id='button_post' type = 'submit' name='kirim' value='Kirim'/>
