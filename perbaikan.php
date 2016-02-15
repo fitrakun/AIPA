@@ -64,31 +64,35 @@
                             </div>
                         </form>
                     </div>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>ID Alat</th>
-                                <th>Nama Institusi</th>
-                                <th>Nomor Telepon</th>
-                                <th>Tanggal Perbaikan</th>
-                                <th>Estimasi Pengembalian</th>
-                                <th>Pengembalian</th>
-                            </tr>
-                        </thead>
-                            <tbody> 
-                            	<?php foreach($result as $res) : ?>
+
+                    <form name="perbaikan" action="controller/perbaikan.php" method="post">
+	                    <table class="table table-hover">
+	                        <thead>
 	                            <tr>
-	                                <td><?php echo $res['id_alat']; ?></td>
-	                        		<td><?php echo $res['nama_institusi']; ?></td>
-	                                <td><?php echo $res['nomor_telepon']; ?></td>
-	                                <td><?php echo $res['tanggal_mulai_perbaikan']; ?></td>
-	                                <td><?php echo $res['estimasi_selesai_perbaikan']; ?></td>
-	               					<td align="center"><input type="checkbox" name="status[]" value=""></td>
+	                                <th>ID Alat</th>
+	                                <th>Nama Institusi</th>
+	                                <th>Nomor Telepon</th>
+	                                <th>Tanggal Perbaikan</th>
+	                                <th>Estimasi Pengembalian</th>
+	                                <th>Pengembalian</th>
 	                            </tr>
-	                            <?php endforeach; ?>
-                                
-                            </tbody>
-                    </table>
+	                        </thead>
+	                            <tbody> 
+	                            	<?php foreach($result as $res) : ?>
+		                            <tr>
+		                                <td><?php echo $res['id_alat']; ?></td>
+		                        		<td><?php echo $res['nama_institusi']; ?></td>
+		                                <td><?php echo $res['nomor_telepon']; ?></td>
+		                                <td><?php echo $res['tanggal_mulai_perbaikan']; ?></td>
+		                                <td><?php echo $res['estimasi_selesai_perbaikan']; ?></td>
+		               					<td align="center"><input type="checkbox" name="check[]" value="<?php echo $res['id_alat']."|".$res['nama_institusi']."|".$res['tanggal_mulai_perbaikan']; ?>"></td>
+		                            </tr>
+		                            <?php endforeach; ?>
+	                                
+	                            </tbody>
+	                    </table>
+	                    <input class = 'span1 btn btn-default' id='button_post' type = 'submit' name="update" value='Update'/>
+	                </form>
                 </div>
 
             </div>
