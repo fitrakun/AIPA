@@ -21,17 +21,17 @@
                 <div class="col-sm-3">
                     <h3><b>Form Perbaikan</b></h3>
                     <h4><b>Detail Alat</b></h4>
-                    <form name ='form_perbaikan' action="controller/perbaikan.php" method = 'post'>
+                    <form name ='form_perbaikan' action="controller/perbaikan.php" onsubmit="return validateDatePerbaikan()" method = 'post'>
                         <h5>ID Alat</h5>
-                        <input id="idalat" pattern="[A-Z]{3}[0-9]{3}" class="span4 form-control" type = 'text' name = 'id' placeholder = 'ID Alat'/><br/>
+                        <input id="idalat" pattern="[A-Z]{3}[0-9]{3}" class="span4 form-control" type = 'text' name = 'id' placeholder = 'ID Alat' required/><br/>
 
                         <h4><b>Detail Teknisi</b></h4>
                         <h5>Nama Institusi</h5>
-                            <input id="institusi" class="span4 form-control" type = 'text' name = 'institusi' placeholder = "ex: Bengkel Wilhelm"/>
+                            <input id="institusi" class="span4 form-control" type = 'text' name = 'institusi' placeholder = "ex: Bengkel Wilhelm" required/>
                         <h5>Nomor Telepon</h5>
-                            <input id="telepon" class="span4 form-control" type = 'number' min='0' name = 'telepon' placeholder = 'ex: 089999999999'/>
+                            <input id="telepon" class="span4 form-control" type = 'number' min='0' name = 'telepon' placeholder = 'ex: 089999999999' required/>
                         <h5>Estimasi Selesai Perbaikan :</h5>
-                            <input class="span4 form-control" type="datetime-local" name="estimasi" />
+                            <input class="span4 form-control" type="datetime-local" name="estimasi" required/>
                         <br/>
                         <input class = 'btn btn-default' id='button_post' type = 'submit' name='kirim' value='Kirim'/>
                     </form>
@@ -48,7 +48,7 @@
                             mysqli_close($conn);
                         ?>
                         <div>
-                            <form name ='nama_alat' action='peralatan.php' method = 'get'>
+                            <form name ='nama_alat' action='perbaikan.php' method = 'get'>
                                 <label for = "nama">Nama Alat</label>
                                 <div class = "form-inline">
                                     <select class = "form-control" name="nama">
@@ -99,11 +99,13 @@
                                 
                             </tbody>
 	                    </table>
+                        <input type="hidden" name="nama" value="<?php if(isset($_GET['nama'])) echo $_GET['nama']; else echo "semua";?>">
 	                    <input class = 'span1 btn btn-default' id='button_post' type = 'submit' name="update" value='Update'/>
 	                </form>
                 </div>
 
             </div>
         </div>
+        <script src="js/validation.js"></script>
     </body>
 </html>

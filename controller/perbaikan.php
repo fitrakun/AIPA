@@ -7,14 +7,12 @@
     }
 
     function cariAlat($conn, $nama) {
-        include "config.php";
-        $conn = connect_database();
 
         if(strcmp($nama, "semua")==0) {
-            $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi`";
+            $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi` WHERE `tanggal_selesai_perbaikan` IS NULL";
         }
         else {
-            $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi` WHERE `tanggal_selesai_perbaikan` IS NOT NULL AND nama_alat = '".$namaalat."'";
+            $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi` WHERE `tanggal_selesai_perbaikan` IS NULL AND nama_alat = '".$nama."'";
         }
         $results = mysqli_query($conn, $sql);
         return $results;
@@ -36,8 +34,7 @@
                 echo "Data anda berhasil disimpan";
                 echo "<script> window.open('../index.php', '_self') </script>";
             }
-            else {
-                echo "usa"; 
+            else { 
                 echo mysqli_error($conn);
                 echo '<a href="../perbaikan.php"> Kembali ke halaman Peralatan</a>';
             }

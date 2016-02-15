@@ -71,15 +71,15 @@
 
                 <div id ="form">
                     <h3>Form Peminjaman</h3>
-                    <form name ='form_peminjaman' action='controller/transaksi.php' method = 'post'>
+                    <form name ='form_peminjaman' action='controller/transaksi.php' onsubmit="return validateDate()" method = 'post'>
                         <h5>ID Peminjam :</h5>
-                        <input type = 'number' min='0' name = 'id' placeholder = 'NIM / NIK Peminjam'/>
+                        <input type = 'number' min='0' name = 'id' placeholder = 'NIM / NIK Peminjam' required/>
                         <h5>Kode Alat :</h5>
-                        <input type = 'text' pattern="[A-Z]{3}[0-9]{3}" name = 'kode-alat' placeholder = 'Kode Alat'/>
+                        <input type = 'text' pattern="[A-Z]{3}[0-9]{3}" name = 'kode-alat' placeholder = 'Kode Alat' required/>
                         <h5>Tanggal Peminjaman :</h5>
-                            <input id="tanggal-pinjam" class="form-control" disabled = "true" type="datetime-local" name="tanggal-pinjam" />
+                            <input id="tanggal-pinjam" class="form-control" disabled = "true" type="datetime-local" name="tanggal-pinjam" required/>
                         <h5>Rencana Pengembalian :</h5>
-                            <input type="datetime-local" class="form-control" name="tanggal-kembali" />
+                            <input id="tanggal-kembali" type="datetime-local" class="form-control" name="tanggal-kembali" required/>
                         <br />
                             <label class="radio-inline"><input type="radio" onclick="peminjaman()" name="jenis" value="peminjaman" checked>Peminjaman</label>
                             <label class="radio-inline"><input type="radio" name="jenis" onclick="booking()" value="booking">Booking</label>
@@ -90,5 +90,6 @@
                 </div>
             </div>
         </div>
+        <script src="js/validation.js"></script>
     </body>
 </html>
