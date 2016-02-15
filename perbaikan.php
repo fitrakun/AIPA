@@ -1,16 +1,3 @@
-<?php
-    include "controller/config.php";
-    $conn = connect_database();
-
-    if(isset($_POST["cari"])) {
-        $namaalat = mysql_real_escape_string($_POST['namaalat2']);
-        $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi` WHERE `tanggal_selesai_perbaikan` IS NOT NULL AND nama_alat = '.$namaalat.'";
-    } else {
-        $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi`";
-    }
-
-    $result = mysqli_query($conn, $sql);
-?>
 
 <!DOCTYPE html>
 <html>
@@ -30,6 +17,7 @@
                 <?php require_once 'navigation_bar.php'?>
             </div>
             <div id="content" class="flex">
+
                 <div class="col-sm-3">
                     <h3><b>Form Perbaikan</b></h3>
                     <h4><b>Detail Alat</b></h4>
@@ -45,24 +33,36 @@
                         <h5>Tanggal Mulai Perbaikan :</h5>
                             <input type="datetime-local" name="mulai_perbaikan" required/>
                         <h5>Estimasi Selesai Perbaikan :</h5>
-                            <input type="datetime-local" name="estimasi" />
+                            <input class="span4 form-control" type="datetime-local" name="estimasi" />
                         <br/>
-                        <input class = 'button' id='button_post' type = 'submit' name='kirim' value='Kirim'/>
+                        <input class = 'btn btn-default' id='button_post' type = 'submit' name='kirim' value='Kirim'/>
                     </form>
                 </div>
 
                <div class="col-sm-11 list">
                     <h3><b>List Perbaikan</b></h3>
                     <div class="s-alat">
-                        <form name ='form_peralatan' action="controller/perbaikan.php; ?>" method = 'post'>
-                            <div class="form-group">
-                                <label for="namaalat" class="span1">Nama Alat</label>
-                                <div class="form-inline">
-                                    <input id="namaalat2" class="span1 form-control" type = 'text' name = 'namaalat2' placeholder = 'Nama Alat'/>
-                                    <input class='span1 btn btn-default' id='button_post' type='submit' name="cari" value="Cari"/>
+
+                        <?php
+                            require_once 'controller/config.php'; require_once'controller/peralatan.php';
+                            $conn = connect_database();
+                            $results = queryNamaAlat($conn);
+                            mysqli_close($conn);
+                        ?>
+                        <div>
+                            <form name ='nama_alat' action='peralatan.php' method = 'get'>
+                                <label for = "nama">Nama Alat</label>
+                                <div class = "form-inline">
+                                    <select class = "form-control" name="nama">
+                                        <?php foreach($results as $result) : ?>
+                                            <option value="<?php echo $result['nama_alat']; ?>"><?php echo $result['nama_alat']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <input  class = 'form-control button' id='button_post' type = 'submit' value='Cari'/>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+
                     </div>
 
                     <form name="perbaikan" action="controller/perbaikan.php" method="post">
@@ -77,19 +77,29 @@
 	                                <th>Pengembalian</th>
 	                            </tr>
 	                        </thead>
-	                            <tbody> 
-	                            	<?php foreach($result as $res) : ?>
-		                            <tr>
-		                                <td><?php echo $res['id_alat']; ?></td>
-		                        		<td><?php echo $res['nama_institusi']; ?></td>
-		                                <td><?php echo $res['nomor_telepon']; ?></td>
-		                                <td><?php echo $res['tanggal_mulai_perbaikan']; ?></td>
-		                                <td><?php echo $res['estimasi_selesai_perbaikan']; ?></td>
-		               					<td align="center"><input type="checkbox" name="check[]" value="<?php echo $res['id_alat']."|".$res['nama_institusi']."|".$res['tanggal_mulai_perbaikan']; ?>"></td>
-		                            </tr>
-		                            <?php endforeach; ?>
-	                                
-	                            </tbody>
+                            <?php
+                                require_once 'controller/perbaikan.php';
+                                $conn = connect_database();
+                                if(isset($_GET['nama'])) {
+                                    echo $_GET['nama'];
+                                   $results = cariAlat($conn, $_GET['nama']);
+                                } else {
+                                    $results = cariAlat($conn, "semua");
+                                }
+                            ?>
+                            <tbody> 
+                            	<?php foreach($results as $res) : ?>
+	                            <tr>
+	                                <td><?php echo $res['id_alat']; ?></td>
+	                        		<td><?php echo $res['nama_institusi']; ?></td>
+	                                <td><?php echo $res['nomor_telepon']; ?></td>
+	                                <td><?php echo $res['tanggal_mulai_perbaikan']; ?></td>
+	                                <td><?php echo $res['estimasi_selesai_perbaikan']; ?></td>
+	               					<td align="center"><input type="checkbox" name="check[]" value="<?php echo $res['id_alat']."|".$res['nama_institusi']."|".$res['tanggal_mulai_perbaikan']; ?>"></td>
+	                            </tr>
+	                            <?php endforeach; ?>
+                                
+                            </tbody>
 	                    </table>
 	                    <input class = 'span1 btn btn-default' id='button_post' type = 'submit' name="update" value='Update'/>
 	                </form>

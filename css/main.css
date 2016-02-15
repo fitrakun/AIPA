@@ -34,6 +34,7 @@ tr.calendar-row	{
     height : 120px;
 }
 td.calendar-day	{
+    min-height: 120px;
     font-size:11px;
 }
 td.calendar-day:hover	{

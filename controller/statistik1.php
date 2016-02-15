@@ -58,7 +58,7 @@ function draw_graph($month,$year,$permintaan,$user){
             ),
             "series"=> array(
                 array(
-                    "name" => 'penggunaan',
+                    "name" => 'kejadian',
                     "data" => $jumlah
                 )
             )

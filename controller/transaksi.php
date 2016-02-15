@@ -9,7 +9,11 @@
 
 		if(userCheck($conn,$_POST['id'])){
             $kodealat = mysqli_real_escape_string($conn,$_POST["kode-alat"]);
-            if(!isAvailable($conn, $kodealat,$_POST["tanggal-pinjam"],$_POST["tanggal-kembali"])) {
+            $tanggal= 55555;
+            if(isset($_POST["tanggal-pinjam"])){
+                $tanggal = $_POST["tanggal-pinjam"];
+            }
+            if(!isAvailable($conn, $kodealat,$tanggal,$_POST["tanggal-kembali"])) {
                 echo "Maaf, alat pada hari tersebut tidak dapat dipinjam </br>";
             }
             else {
