@@ -63,7 +63,7 @@ function draw_graph($month,$year,$permintaan,$user){
             ),
             "series"=> array(
                 array(
-                    "name" => 'penggunaan',
+                    "name" => 'kejadian',
                     "colorByPoint" => true,
                     "data" => array(),
                     "drilldown" => array(

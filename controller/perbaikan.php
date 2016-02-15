@@ -45,7 +45,7 @@
         else {
             if(mysqli_query($conn,$sql3) && mysqli_query($conn,$sql2) && mysqli_query($conn,$sql1)) {
             echo "Data anda berhasil disimpan";
-            echo "<script> window.open('../index.php', '_self') </script>";
+            echo "<script> window.open('../perbaikan.php', '_self') </script>";
             } else {
                 echo mysqli_error($conn);
                 echo '<a href="../perbaikan.php"> Kembali ke halaman Peralatan</a>';

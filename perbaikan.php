@@ -31,9 +31,9 @@
                         <h5>Nomor Telepon</h5>
                             <input id="telepon" class="span4 form-control" type = 'number' min='0' name = 'telepon' placeholder = 'ex: 089999999999'/>
                         <h5>Estimasi Selesai Perbaikan :</h5>
-                            <input type="datetime-local" name="estimasi" />
+                            <input class="span4 form-control" type="datetime-local" name="estimasi" />
                         <br/>
-                        <input class = 'button' id='button_post' type = 'submit' name='kirim' value='Kirim'/>
+                        <input class = 'btn btn-default' id='button_post' type = 'submit' name='kirim' value='Kirim'/>
                     </form>
                 </div>
 
