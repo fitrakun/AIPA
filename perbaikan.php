@@ -48,7 +48,7 @@
                             mysqli_close($conn);
                         ?>
                         <div>
-                            <form name ='nama_alat' action='peralatan.php' method = 'get'>
+                            <form name ='nama_alat' action='perbaikan.php' method = 'get'>
                                 <label for = "nama">Nama Alat</label>
                                 <div class = "form-inline">
                                     <select class = "form-control" name="nama">
@@ -99,6 +99,7 @@
                                 
                             </tbody>
 	                    </table>
+                        <input type="hidden" name="nama" value="<?php if(isset($_GET['nama'])) echo $_GET['nama']; else echo "semua";?>">
 	                    <input class = 'span1 btn btn-default' id='button_post' type = 'submit' name="update" value='Update'/>
 	                </form>
                 </div>
