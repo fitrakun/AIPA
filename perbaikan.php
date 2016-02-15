@@ -21,7 +21,7 @@
                 <div class="col-sm-3">
                     <h3><b>Form Perbaikan</b></h3>
                     <h4><b>Detail Alat</b></h4>
-                    <form name ='form_perbaikan' action="controller/perbaikan.php" method = 'post'>
+                    <form name ='form_perbaikan' action="controller/perbaikan.php" onsubmit="return validateDatePerbaikan()" method = 'post'>
                         <h5>ID Alat</h5>
                         <input id="idalat" pattern="[A-Z]{3}[0-9]{3}" class="span4 form-control" type = 'text' name = 'id' placeholder = 'ID Alat' required/><br/>
 
@@ -30,10 +30,8 @@
                             <input id="institusi" class="span4 form-control" type = 'text' name = 'institusi' placeholder = "ex: Bengkel Wilhelm" required/>
                         <h5>Nomor Telepon</h5>
                             <input id="telepon" class="span4 form-control" type = 'number' min='0' name = 'telepon' placeholder = 'ex: 089999999999' required/>
-                        <h5>Tanggal Mulai Perbaikan :</h5>
-                            <input type="datetime-local" name="mulai_perbaikan" required/>
                         <h5>Estimasi Selesai Perbaikan :</h5>
-                            <input class="span4 form-control" type="datetime-local" name="estimasi" />
+                            <input class="span4 form-control" type="datetime-local" name="estimasi" required/>
                         <br/>
                         <input class = 'btn btn-default' id='button_post' type = 'submit' name='kirim' value='Kirim'/>
                     </form>
@@ -108,5 +106,6 @@
 
             </div>
         </div>
+        <script src="js/validation.js"></script>
     </body>
 </html>

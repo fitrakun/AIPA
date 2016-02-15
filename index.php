@@ -77,7 +77,7 @@
                         <h5>Kode Alat :</h5>
                         <input type = 'text' pattern="[A-Z]{3}[0-9]{3}" name = 'kode-alat' placeholder = 'Kode Alat' required/>
                         <h5>Tanggal Peminjaman :</h5>
-                            <input id="tanggal-pinjam" class="form-control" disabled = "true" type="datetime-local" name="tanggal-pinjam" />
+                            <input id="tanggal-pinjam" class="form-control" disabled = "true" type="datetime-local" name="tanggal-pinjam" required/>
                         <h5>Rencana Pengembalian :</h5>
                             <input id="tanggal-kembali" type="datetime-local" class="form-control" name="tanggal-kembali" required/>
                         <br />
