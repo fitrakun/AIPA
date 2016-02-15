@@ -1,11 +1,15 @@
-function validate_id() {
-	var reg =;
-	if(document.forms["form_peralatan"]["idalat"].value.match(reg)) {
-		alert("hai");
-		return false;
+function validateDate() {
+	var startTime = new Date(document.forms["form_peminjaman"]["tanggal-pinjam"].value);
+	var finishTime = new Date(document.forms["form_peminjaman"]["tanggal-kembali"].value);
+	var currentTime = new Date();
+	if(startTime < currentTime) {
+		alert("Tanggal minimal peminjaman adalah hari ini");
 	}
-	else {  
-		alert("Masukan ID salah!");
-		return false;
+	else if(finishTime <= startTime) {
+		alert("Tanggal selesai peminjaman harus setelah tanggal peminjaman");
 	}
+	else {
+		return true;
+	}
+	return false;
 }

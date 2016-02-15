@@ -56,7 +56,6 @@
                                 require_once 'controller/pengembalian.php';
                                 $conn = connect_database();
                                 if(isset($_GET['nama'])) {
-                                    echo $_GET['nama'];
                                    $results = cariAlat($conn, $_GET['nama']);
                                 } else {
                                     $results = cariAlat($conn, "semua");
