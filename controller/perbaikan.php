@@ -1,6 +1,4 @@
 <?php
-include "config.php";
-$conn = connect_database();
 
     if(isset($_POST['kirim'])) {
         $tanggal=date("Y-m-d",time());
