@@ -13,15 +13,6 @@
               <li class="<?php if(basename($_SERVER['SCRIPT_NAME']) == 'statistik.php'){echo 'active'; }else { echo ''; } ?>"><a href="statistik.php">Statistik</a></li>
               <li class="<?php if(basename($_SERVER['SCRIPT_NAME']) == 'pengguna.php'){echo 'active'; }else { echo ''; } ?>"><a href="pengguna.php">Pengguna</a></li>
             </ul>
-            <div class="nav navbar-header navbar-right">
-                <ul class="span1 nama">
-                    <li><a href="#">Pipin</a></li>
-                    <li><a href="#" class="small8">Admin Duktek</a></li>
-                </ul>
-            </div>
-            <div class="navbar-right">
-                <img class="ava" src="img/ava.png">
-            </div>
         </div>
     </nav>
 </html>

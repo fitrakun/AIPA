@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="339e1d6a-bebd-4f17-b633-523928ec6828" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/calendar.php" afterPath="$PROJECT_DIR$/controller/calendar.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main.css" afterPath="$PROJECT_DIR$/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/navigation_bar.php" afterPath="$PROJECT_DIR$/navigation_bar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controller/transaksi.php" afterPath="$PROJECT_DIR$/controller/transaksi.php" />
     </list>
     <ignored path="duktek.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,13 +32,23 @@
       <file leaf-file-name="calendar.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controller/calendar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0" vertical-offset="2377" max-vertical-offset="3604">
-              <caret line="156" column="26" selection-start-line="156" selection-start-column="26" selection-end-line="156" selection-end-column="26" />
+            <state vertical-scroll-proportion="-13.654546" vertical-offset="2275" max-vertical-offset="3604">
+              <caret line="178" column="32" selection-start-line="178" selection-start-column="32" selection-end-line="178" selection-end-column="32" />
               <folding>
                 <marker date="1455519855628" expanded="true" signature="4808:5057" placeholder="SELECT * FRO..booking..." />
                 <marker date="1455519855628" expanded="true" signature="5247:5483" placeholder="SELECT * FRO..peminjaman..." />
                 <marker date="1455519855628" expanded="true" signature="5672:5913" placeholder="SELECT * FRO..perbaikan..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navigation_bar.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/navigation_bar.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="408">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -62,12 +73,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55314285" vertical-offset="587" max-vertical-offset="2346">
-              <caret line="63" column="22" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
+            <state vertical-scroll-proportion="-11.206897" vertical-offset="270" max-vertical-offset="2363">
+              <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="transaksi.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/controller/transaksi.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.8647399" vertical-offset="240" max-vertical-offset="2074">
+              <caret line="109" column="17" selection-start-line="109" selection-start-column="17" selection-end-line="109" selection-end-column="17" />
+              <folding>
+                <marker date="1455520552004" expanded="true" signature="684:855" placeholder="INSERT INTO ..." />
+                <marker date="1455520552004" expanded="true" signature="937:1192" placeholder="INSERT INTO ..." />
+                <marker date="1455520552004" expanded="true" signature="1782:1817" placeholder="SELECT * FRO..user..." />
+                <marker date="1455520552004" expanded="true" signature="2479:2531" placeholder="SELECT * FRO..peminjaman..." />
+                <marker date="1455520552004" expanded="true" signature="3466:3515" placeholder="SELECT * FRO..booking..." />
+                <marker date="1455520552004" expanded="true" signature="4475:4526" placeholder="SELECT * FRO..perbaikan..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -93,19 +121,6 @@
               <folding>
                 <marker date="1455513772166" expanded="true" signature="220:283" placeholder="SELECT * FRO..." />
                 <marker date="1455513772166" expanded="true" signature="341:361" placeholder="SELECT * FRO..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="perbaikan.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/perbaikan.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1802">
-              <caret line="35" column="43" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
-              <folding>
-                <marker date="1455517435376" expanded="true" signature="191:315" placeholder="SELECT * FRO..." />
-                <marker date="1455517435376" expanded="true" signature="347:395" placeholder="SELECT * FRO..." />
               </folding>
             </state>
           </provider>
@@ -148,9 +163,7 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/calendar.php" />
         <option value="$PROJECT_DIR$/Calendar.php" />
-        <option value="$PROJECT_DIR$/controller/transaksi.php" />
         <option value="$PROJECT_DIR$/controller/statistik.php" />
-        <option value="$PROJECT_DIR$/navigation_bar.php" />
         <option value="$PROJECT_DIR$/controller/statistik1.php" />
         <option value="$PROJECT_DIR$/controller/statistik2.php" />
         <option value="$PROJECT_DIR$/statistik.php" />
@@ -162,6 +175,8 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/controller/calendar.php" />
         <option value="$PROJECT_DIR$/css/main.css" />
+        <option value="$PROJECT_DIR$/controller/transaksi.php" />
+        <option value="$PROJECT_DIR$/navigation_bar.php" />
       </list>
     </option>
   </component>
@@ -386,6 +401,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1455520552004" expanded="true" signature="684:855" placeholder="INSERT INTO ..." />
+            <marker date="1455520552004" expanded="true" signature="937:1192" placeholder="INSERT INTO ..." />
+            <marker date="1455520552004" expanded="true" signature="1782:1817" placeholder="SELECT * FRO..user..." />
+            <marker date="1455520552004" expanded="true" signature="2479:2531" placeholder="SELECT * FRO..peminjaman..." />
+            <marker date="1455520552004" expanded="true" signature="3466:3515" placeholder="SELECT * FRO..booking..." />
+            <marker date="1455520552004" expanded="true" signature="4475:4526" placeholder="SELECT * FRO..perbaikan..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -532,6 +555,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="782">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1455520552004" expanded="true" signature="684:855" placeholder="INSERT INTO ..." />
+            <marker date="1455520552004" expanded="true" signature="937:1192" placeholder="INSERT INTO ..." />
+            <marker date="1455520552004" expanded="true" signature="1782:1817" placeholder="SELECT * FRO..user..." />
+            <marker date="1455520552004" expanded="true" signature="2479:2531" placeholder="SELECT * FRO..peminjaman..." />
+            <marker date="1455520552004" expanded="true" signature="3466:3515" placeholder="SELECT * FRO..booking..." />
+            <marker date="1455520552004" expanded="true" signature="4475:4526" placeholder="SELECT * FRO..perbaikan..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -618,6 +649,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.66952056" vertical-offset="0" max-vertical-offset="115022">
           <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -642,20 +674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/transaksi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="2006">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/navigation_bar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.730769" vertical-offset="0" max-vertical-offset="561">
-          <caret line="21" column="31" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controller/pengembalian.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="816">
@@ -668,8 +686,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1802">
           <caret line="35" column="43" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="43" />
           <folding>
-            <marker date="1455517435376" expanded="true" signature="191:315" placeholder="SELECT * FRO..." />
-            <marker date="1455517435376" expanded="true" signature="347:395" placeholder="SELECT * FRO..." />
+            <marker date="1455517435376" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..." />
+            <marker date="1455517435376" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..." />
           </folding>
         </state>
       </provider>
@@ -742,10 +760,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.206897" vertical-offset="270" max-vertical-offset="2363">
+          <caret line="35" column="17" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/controller/calendar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0" vertical-offset="2377" max-vertical-offset="3604">
-          <caret line="156" column="26" selection-start-line="156" selection-start-column="26" selection-end-line="156" selection-end-column="26" />
+        <state vertical-scroll-proportion="-13.654546" vertical-offset="2275" max-vertical-offset="3604">
+          <caret line="178" column="32" selection-start-line="178" selection-start-column="32" selection-end-line="178" selection-end-column="32" />
           <folding>
             <marker date="1455519855628" expanded="true" signature="4808:5057" placeholder="SELECT * FRO..booking..." />
             <marker date="1455519855628" expanded="true" signature="5247:5483" placeholder="SELECT * FRO..peminjaman..." />
@@ -754,11 +780,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/main.css">
+    <entry file="file://$PROJECT_DIR$/navigation_bar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55314285" vertical-offset="587" max-vertical-offset="2346">
-          <caret line="63" column="22" selection-start-line="63" selection-start-column="22" selection-end-line="63" selection-end-column="22" />
+        <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="408">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/transaksi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.8647399" vertical-offset="240" max-vertical-offset="2074">
+          <caret line="109" column="17" selection-start-line="109" selection-start-column="17" selection-end-line="109" selection-end-column="17" />
+          <folding>
+            <marker date="1455520552004" expanded="true" signature="684:855" placeholder="INSERT INTO ..." />
+            <marker date="1455520552004" expanded="true" signature="937:1192" placeholder="INSERT INTO ..." />
+            <marker date="1455520552004" expanded="true" signature="1782:1817" placeholder="SELECT * FRO..user..." />
+            <marker date="1455520552004" expanded="true" signature="2479:2531" placeholder="SELECT * FRO..peminjaman..." />
+            <marker date="1455520552004" expanded="true" signature="3466:3515" placeholder="SELECT * FRO..booking..." />
+            <marker date="1455520552004" expanded="true" signature="4475:4526" placeholder="SELECT * FRO..perbaikan..." />
+          </folding>
         </state>
       </provider>
     </entry>
