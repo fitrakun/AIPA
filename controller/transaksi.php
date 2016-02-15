@@ -58,7 +58,7 @@
         $waktuselesai = intval(substr($tanggalselesai,0,4))*365+intval(substr($tanggalselesai,5,2))*30+intval(substr($tanggalselesai,8,2));
 
         if($available){
-            $results = mysqli_query($conn, "SELECT * FROM peminjaman WHERE id_alat = '$kodealat'");
+            $results = mysqli_query($conn, "SELECT * FROM peminjaman WHERE id_alat = '$kodealat' AND tanggal_pengembalian IS NULL");
             if(mysqli_num_rows($results)>0){
                 foreach($results as $result){
                     $mulai = intval(substr($result['tanggal_peminjaman'],0,4))*365+intval(substr($result['tanggal_peminjaman'],5,2))*30+intval(substr($result['tanggal_peminjaman'],8,2));
@@ -66,9 +66,6 @@
 
                     if((($waktumulai<$mulai) and ($waktuselesai<$mulai)) or (($waktumulai>$selesai) and ($waktuselesai>$selesai))){
                         //nothing
-                    }
-                    else if($result['tanggal_pengembalian']==NULL){
-                        //nothing barang telah dikelmbalikan
                     }
                     else{
                         $available = false;
@@ -98,7 +95,7 @@
 
 
         if($available){
-            $results = mysqli_query($conn, "SELECT * FROM perbaikan WHERE id_alat = '$kodealat'");
+            $results = mysqli_query($conn, "SELECT * FROM perbaikan WHERE id_alat = '$kodealat' AND tanggal_selesai_perbaikan IS NULL;");
             if(mysqli_num_rows($results)>0){
                 foreach($results as $result){
                     $mulai = intval(substr($result['tanggal_mulai_perbaikan'],0,4))*365+intval(substr($result['tanggal_mulai_perbaikan'],5,2))*30+intval(substr($result['tanggal_mulai_perbaikan'],8,2));
@@ -106,9 +103,6 @@
 
                     if((($waktumulai<$mulai) and ($waktuselesai<$mulai)) or (($waktumulai>$selesai) and ($waktuselesai>$selesai))){
                         //nothing
-                    }
-                    else if($result['tanggal_selesai_perbaikan']==NULL){
-                        //nothing barang telah dikelmbalikan
                     }
                     else{
                         $available = false;
