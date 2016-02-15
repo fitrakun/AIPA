@@ -103,7 +103,6 @@
 	                    <input class = 'span1 btn btn-default' id='button_post' type = 'submit' name="update" value='Update'/>
 	                </form>
                 </div>
-
             </div>
         </div>
         <script src="js/validation.js"></script>

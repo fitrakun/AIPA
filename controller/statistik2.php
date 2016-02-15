@@ -36,8 +36,6 @@ function draw_graph($month,$year,$permintaan,$user){
             if($row['nama_alat']!=end($nama)){
                 array_push($nama,$row['nama_alat']);
             }
-
-
         }
 
         $arr = array(
