@@ -1,16 +1,15 @@
-<?php 
-        include "controller/config.php";
-        $conn = connect_database();
-        $namaalat = mysql_real_escape_string($_POST['namaalat2']);        
-        if(isset($_POST["Cari"]))
-        {
-            echo "TEST";
-            $sql = "SELECT * FROM `alat` WHERE nama_alat LIKE '%" . $namaalat . "%';";
-            
-        }
-        else
-            $sql="SELECT * FROM `alat`";
-        $result = $conn->query($sql);
+<?php
+include "controller/config.php";
+$conn = connect_database();
+$namaalat = mysql_real_escape_string($_POST['namaalat2']);
+if(isset($_POST["Cari"]))
+{
+    $sql = "SELECT * FROM `alat` WHERE nama_alat LIKE '%" . $namaalat . "%';";
+
+}
+else
+    $sql="SELECT * FROM `alat`";
+$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html>
