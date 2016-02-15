@@ -1,30 +1,16 @@
-<<<<<<< HEAD
 <?php 
         include "controller/config.php";
         $conn = connect_database();
+        $namaalat = mysql_real_escape_string($_POST['namaalat2']);        
         if(isset($_POST["Cari"]))
         {
-            $namaalat = mysql_real_escape_string($_POST['namaalat2']);  
+            echo "TEST";
             $sql = "SELECT * FROM `alat` WHERE nama_alat LIKE '%" . $namaalat . "%';";
             
         }
         else
             $sql="SELECT * FROM `alat`";
         $result = $conn->query($sql);
-=======
-<?php
-include "controller/config.php";
-$conn = connect_database();
-$namaalat = mysql_real_escape_string($_POST['namaalat2']);
-if(isset($_POST["Cari"]))
-{
-    $sql = "SELECT * FROM `alat` WHERE nama_alat LIKE '%" . $namaalat . "%';";
-
-}
-else
-    $sql="SELECT * FROM `alat`";
-$result = $conn->query($sql);
->>>>>>> f0b0771faa067f92a12e0f1262eca174b5883c76
 ?>
 <!DOCTYPE html>
 <html>
@@ -83,16 +69,16 @@ $result = $conn->query($sql);
                 <div class="col-sm-3">
                     <h3>Tambah Peralatan</h3>
                     <form name ='form_peralatan' action='controller/peralatan.php' method = 'post'>
-                        <h5>ID Alat</h5>
+                        <h4>ID Alat</h4>
                         <input id="idalat" class="span4 form-control" type = 'text' name = 'idalat' placeholder = 'ID Alat'/>
-                        <h5>Nama Alat</h5>
+                        <h4>Nama Alat</h4>
                         <input id="namaalat" class="span4 form-control" type = 'text' name = 'namaalat' placeholder = 'Nama Alat'/>
-                        <h5>Status</h5>
+                        <h4>Status</h4>
                             <select class="form-control" name="status" id="status">
                                 <option value="normal">normal</option>
                                 <option value="rusak">rusak</option>
                             </select>
-                        <h5>Lokasi</h5>
+                        <h4>Lokasi</h4>
                         <input id="lokasi" class="span4 form-control" type = 'text' name = 'lokasi' placeholder = 'Lokasi'/>
                         <input class='span1 btn btn-default btn-add' id='button_post' type='submit' value="Tambahkan" name="Tambahkan"/>
                     </form>

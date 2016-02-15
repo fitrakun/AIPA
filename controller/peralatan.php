@@ -15,9 +15,4 @@
             echo '<a href="../peralatan.php"> Kembali ke halaman Peralatan</a>';
         }
     }
-    function queryNamaAlat($conn) {
-        $sql = "SELECT DISTINCT `nama_alat` FROM `alat`";
-        $results = mysqli_query($conn, $sql);
-        return $results;
-    }
 ?>
