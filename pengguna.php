@@ -25,7 +25,7 @@
         
     </head>
     <body>
-        <div id = "container">
+        <div id = "container" class="special-pad">
             <div id  = "header">
                 <?php require_once 'navigation_bar.php'?>
             </div>

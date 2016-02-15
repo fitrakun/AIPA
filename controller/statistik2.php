@@ -9,8 +9,6 @@
     }
 </script>
 
-
-
 <?php
 function draw_graph($month,$year,$permintaan,$user){
     include "controller/config.php";
@@ -41,23 +39,36 @@ function draw_graph($month,$year,$permintaan,$user){
                 "text" => $permintaan." bulan ".$month." tahun ".$year
             ),
             "xAxis" => array(
-
-                "crosshair" =>true
+                "type" =>"category"
             ),
             "yAxis"=> array(
                 "min" =>0,
                 "title" =>'Jumlah Occasion'
             ),
+            "legend"=> array(
+                "enabled" =>false
+            ),
             "plotOptions" => array(
-                "column" =>array(
-                    "pointPadding" =>0.2,
-                    "borderWidth" =>0
+                "series" =>array(
+                    "borderWidth" =>0,
+                    "dataLabels" => array(
+                        "enabled" =>true,
+                        "format" =>'{point.y:.1f}%'
+                    )
                 )
+            ),
+            "tooltip"=> array(
+                "headerFormat"=> "<span style='font-size:11px'>{series.name}</span><br>",
+                "pointFormat" => "<span style='color:{point.color}'>{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>"
             ),
             "series"=> array(
                 array(
                     "name" => 'penggunaan',
-
+                    "colorByPoint" => true,
+                    "data" => array(),
+                    "drilldown" => array(
+                        "serries" => array()
+                    )
                 )
             )
         );

@@ -55,12 +55,12 @@ function markdate(&$booked,$results,$num_days,$month,$pengecekkan){
     }
     else if($pengecekkan == 2){
         foreach ($results as $result) { //cek booking
-            if ($result['tanggal_rencana_pengembalian'] > $result['tanggal_peminjaman']) {
+            if ($result['tanggal_rencana_pengembalian'] > $result['tanggal_rencana_peminjaman']) {
                 $tanggal_pinjam = intval(substr($result['tanggal_rencana_peminjaman'], 8, 2));
                 $tanggal_kembali = intval(substr($result['tanggal_rencana_pengembalian'], 8, 2));
 
                 $bulan_sekarang = intval($month);
-                $bulan_pinjam = intval(substr($result['tanggal_peminjaman'], 5, 2));
+                $bulan_pinjam = intval(substr($result['tanggal_rencana_peminjaman'], 5, 2));
                 $bulan_kembali = intval(substr($result['tanggal_rencana_pengembalian'], 5, 2));
 
                 if($bulan_pinjam< $bulan_sekarang){

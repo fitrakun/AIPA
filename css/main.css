@@ -95,7 +95,13 @@ select{
     margin:auto;
     padding:20px 20px 60px 0px;
     max-width:1050px;
+}
+.flex{
     display : flex;
+}
+
+.special-pad{
+    padding-top:50px;
 }
 
 #calendar{

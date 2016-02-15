@@ -1,9 +1,9 @@
 <?php
     include "controller/config.php";
     $conn = connect_database();
-    
-    $namaalat = mysql_real_escape_string($_POST['namaalat2']);
+
     if(isset($_POST["cari"])) {
+        $namaalat = mysql_real_escape_string($_POST['namaalat2']);
         $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi` WHERE `tanggal_selesai_perbaikan` IS NOT NULL AND nama_alat = '.$namaalat.'";
     } else {
         $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi`";
@@ -25,11 +25,11 @@
         <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
-        <div id="container">
+        <div id="container" class="special-pad">
             <div id="header">
                 <?php require_once 'navigation_bar.php'?>
             </div>
-            <div id="content">
+            <div id="content" class="flex">
                 <div class="col-sm-3">
                     <h3><b>Form Perbaikan</b></h3>
                     <h4><b>Detail Alat</b></h4>

@@ -30,17 +30,16 @@
 
     </head>
     <body>
-        <div id = "container">
+        <div id = "container" class="special-pad">
             <div id  = "header">
                 <?php $page = 'index'; require_once 'navigation_bar.php'?>
             </div>
 
-            <div id="content">
+            <div id="content" >
                 <div class="col-sm-3">
                     <form name ='form_statistik' action='<?php echo $_SERVER['PHP_SELF'];?>' method = 'post'>
                         <h3 class="span1"><b>Form Statistik</b></h3>
                         <div class="form-group">
-                            <br/>
                             <h4><b>Periode</b></h4>
                             <select class = "span4 form-control" name = 'month'>
                                 <option selected = "selected" value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option>
