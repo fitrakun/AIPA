@@ -77,7 +77,7 @@
 
                 <div class="col-sm-9">
                     <?php
-                    require 'controller/statistik.php';
+                    require 'controller/statistik1.php';
                     if(isset($_POST['Tampilkan'])){
                         $month = $_POST['month'];
                         $year = $_POST['year'];

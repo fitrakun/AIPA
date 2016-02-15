@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php 
         include "controller/config.php";
         $conn = connect_database();
@@ -10,6 +11,20 @@
         else
             $sql="SELECT * FROM `alat`";
         $result = $conn->query($sql);
+=======
+<?php
+include "controller/config.php";
+$conn = connect_database();
+$namaalat = mysql_real_escape_string($_POST['namaalat2']);
+if(isset($_POST["Cari"]))
+{
+    $sql = "SELECT * FROM `alat` WHERE nama_alat LIKE '%" . $namaalat . "%';";
+
+}
+else
+    $sql="SELECT * FROM `alat`";
+$result = $conn->query($sql);
+>>>>>>> f0b0771faa067f92a12e0f1262eca174b5883c76
 ?>
 <!DOCTYPE html>
 <html>
