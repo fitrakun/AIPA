@@ -48,19 +48,19 @@ function markdate(&$booked,$results,$num_days,$month,$pengecekkan){
                 $alat = $result['id_alat'];
 
                 for ($i = $tanggal_pinjam; $i <= $tanggal_kembali; $i++) {
-                    $booked[$i - 1].= $alat.' : dipinjam <br>';
+                    $booked[$i - 1].='<p>'.$alat.' : dipinjam <p>';
                 }
             }
         }
     }
     else if($pengecekkan == 2){
         foreach ($results as $result) { //cek booking
-            if ($result['tanggal_rencana_pengembalian'] > $result['tanggal_peminjaman']) {
+            if ($result['tanggal_rencana_pengembalian'] > $result['tanggal_rencana_peminjaman']) {
                 $tanggal_pinjam = intval(substr($result['tanggal_rencana_peminjaman'], 8, 2));
                 $tanggal_kembali = intval(substr($result['tanggal_rencana_pengembalian'], 8, 2));
 
                 $bulan_sekarang = intval($month);
-                $bulan_pinjam = intval(substr($result['tanggal_peminjaman'], 5, 2));
+                $bulan_pinjam = intval(substr($result['tanggal_rencana_peminjaman'], 5, 2));
                 $bulan_kembali = intval(substr($result['tanggal_rencana_pengembalian'], 5, 2));
 
                 if($bulan_pinjam< $bulan_sekarang){
@@ -73,20 +73,20 @@ function markdate(&$booked,$results,$num_days,$month,$pengecekkan){
                 $alat = $result['id_alat'];
 
                 for ($i = $tanggal_pinjam; $i <= $tanggal_kembali; $i++) {
-                    $booked[$i - 1] .= $alat . ' : dibooking <br>';
+                    $booked[$i - 1] .= '<p>'.$alat.' : dibooking <p>';
                 }
             }
         }
     }
     else if($pengecekkan == 3){
         foreach ($results as $result) { //cek perbaikan
-            if ($result['tanggal_rencana_pengembalian'] > $result['tanggal_peminjaman']) {
+            if ($result['estimasi_selesai_perbaikan'] > $result['tanggal_mulai_perbaikan']) {
                 $tanggal_perbaikan = intval(substr($result['tanggal_mulai_perbaikan'], 8, 2));
                 $tanggal_kembali = intval(substr($result['estimasi_selesai_perbaikan'], 8, 2));
 
                 $bulan_sekarang = intval($month);
-                $bulan_pinjam = intval(substr($result['tanggal_peminjaman'], 5, 2));
-                $bulan_kembali = intval(substr($result['tanggal_rencana_pengembalian'], 5, 2));
+                $bulan_pinjam = intval(substr($result['tanggal_mulai_perbaikan'], 5, 2));
+                $bulan_kembali = intval(substr($result['estimasi_selesai_perbaikan'], 5, 2));
 
                 if($bulan_pinjam< $bulan_sekarang){
                     $tanggal_perbaikan = 0;
@@ -98,7 +98,7 @@ function markdate(&$booked,$results,$num_days,$month,$pengecekkan){
                 $alat = $result['id_alat'];
 
                 for ($i = $tanggal_perbaikan; $i <= $tanggal_kembali; $i++) {
-                    $booked[$i - 1] .= $alat . ' : diperbaiki <br>';
+                    $booked[$i - 1] .= '<p>'.$alat.' : diperbaiki <p>';
                 }
             }
         }
@@ -167,14 +167,12 @@ function draw_calendar($month,$year,$alat){
     for($list_day = 1; $list_day <= $days_in_month; $list_day++):
 
         $calendar.= '<td class="calendar-day">';
-        // add in the status
-        $calendar .= '<div class="day-item">'.$booked[$list_day-1].' </div>';
+
         /* add in the day number */
         $calendar.= '<div class="day-number">'.$list_day.'</div>';
 
-
         /** QUERY THE DATABASE FOR AN ENTRY FOR THIS DAY !!  IF MATCHES FOUND, PRINT THEM !! **/
-        $calendar.= str_repeat('<p> </p>',2);
+        $calendar.= $booked[$list_day-1];
 
         $calendar.= '</td>';
         if($running_day == 6):

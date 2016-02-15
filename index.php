@@ -9,7 +9,16 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        
+
+        <script>
+            function peminjaman() {
+                document.getElementById("tanggal-pinjam").disabled = true;
+            }
+            function booking() {
+                document.getElementById("tanggal-pinjam").disabled = false;
+            }
+        </script>
+
     </head>
     <body>
         <div id = "container">
@@ -17,7 +26,7 @@
                 <?php require_once 'navigation_bar.php'?>
             </div>
 
-            <div id="content">
+            <div id="content" class="flex">
                 <div id = "calendar">
                     <?php
                     require 'controller/calendar.php';
@@ -30,7 +39,7 @@
                         <div class = "form-inline">
                             <h4>Pencarian Ketersediaan Alat</h4>
                             <select class = "span4 form-control" name = 'month'>
-                                <option value="1">Jan</option><option selected = "selected" value="2">Feb</option><option value="3">Mar</option>
+                                <option selected = "selected" value="1">Jan</option><option value="2">Feb</option><option value="3">Mar</option>
                                 <option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option>
                                 <option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option>
                                 <option value="4">Oct</option><option value="10">Nov</option><option value="12">Dec</option>
@@ -68,13 +77,15 @@
                         <h5>Kode Alat :</h5>
                         <input type = 'text' pattern="[A-Z]{3}[0-9]{3}" name = 'kode-alat' placeholder = 'Kode Alat'/>
                         <h5>Tanggal Peminjaman :</h5>
-                            <input type="datetime-local" name="tanggal-pinjam" />
+                            <input id="tanggal-pinjam" class="form-control" disabled = "true" type="datetime-local" name="tanggal-pinjam" />
                         <h5>Rencana Pengembalian :</h5>
-                            <input type="datetime-local" name="tanggal-kembali" />
+                            <input type="datetime-local" class="form-control" name="tanggal-kembali" />
                         <br />
-                            <label class="radio-inline"><input type="radio" name="jenis" value="booking" checked>Booking</label>
-                            <label class="radio-inline"><input type="radio" name="jenis" value="peminjaman">Peminjaman</label>
-                        <input class = 'button' id='button_post' type = 'submit' name='kirim' value='Kirim'/>
+                            <label class="radio-inline"><input type="radio" onclick="peminjaman()" name="jenis" value="peminjaman" checked>Peminjaman</label>
+                            <label class="radio-inline"><input type="radio" name="jenis" onclick="booking()" value="booking">Booking</label>
+                        </br>
+                        </br>
+                        <input class = 'btn btn-default' id='button_post' type = 'submit' name='kirim' value='Kirim'/>
                     </form>
                 </div>
             </div>

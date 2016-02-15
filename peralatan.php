@@ -1,10 +1,10 @@
 <?php 
         include "controller/config.php";
         $conn = connect_database();
-        $namaalat = mysql_real_escape_string($_POST['namaalat2']);        
+
         if(isset($_POST["Cari"]))
         {
-            echo "TEST";
+            $namaalat = mysql_real_escape_string($_POST['namaalat2']);
             $sql = "SELECT * FROM `alat` WHERE nama_alat LIKE '%" . $namaalat . "%';";
             
         }
@@ -25,7 +25,7 @@
         <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
-        <div id="container">
+        <div id="container" class="special-pad">
             <div id="header">
                 <?php require_once 'navigation_bar.php'?>
             </div>

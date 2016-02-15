@@ -1,9 +1,9 @@
 <?php
     include "controller/config.php";
     $conn = connect_database();
-    
-    $namaalat = mysql_real_escape_string($_POST['namaalat2']);
+
     if(isset($_POST["cari"])) {
+        $namaalat = mysql_real_escape_string($_POST['namaalat2']);
         $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi` WHERE `tanggal_selesai_perbaikan` IS NOT NULL AND nama_alat = '.$namaalat.'";
     } else {
         $sql = "SELECT * FROM `perbaikan` NATURAL JOIN `teknisi`";
@@ -25,11 +25,11 @@
         <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
-        <div id="container">
+        <div id="container" class="special-pad">
             <div id="header">
                 <?php require_once 'navigation_bar.php'?>
             </div>
-            <div id="content">
+            <div id="content" class="flex">
                 <div class="col-sm-3">
                     <h3><b>Form Perbaikan</b></h3>
                     <h4><b>Detail Alat</b></h4>
@@ -64,27 +64,35 @@
                             </div>
                         </form>
                     </div>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>ID Alat</th>
-                                <th>Nama Institusi</th>
-                                <th>Nomor Telepon</th>
-                                <th>Tanggal Perbaikan</th>
-                                <th>Estimasi Pengembalian</th>
-                                <th>Pengembalian</th>
-                            </tr>
-                        </thead>
-                            <tbody> 
-                                <?php 
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo "<tr> <td>" . $row["id_alat"] . "</td> <td>" . $row["nama_institusi"] . "</td> <td>" . $row["nomor_telepon"] . "</td> <td>" . $row ["tanggal_mulai_perbaikan"] . "</td></tr>" . "</td> <td>" . $row ["estimasi_selesai_perbaikan"] . "</td></tr>";
-                                    }
-                                }
-                                ?>
-                            </tbody>
-                    </table>
+
+                    <form name="perbaikan" action="controller/perbaikan.php" method="post">
+	                    <table class="table table-hover">
+	                        <thead>
+	                            <tr>
+	                                <th>ID Alat</th>
+	                                <th>Nama Institusi</th>
+	                                <th>Nomor Telepon</th>
+	                                <th>Tanggal Perbaikan</th>
+	                                <th>Estimasi Pengembalian</th>
+	                                <th>Pengembalian</th>
+	                            </tr>
+	                        </thead>
+	                            <tbody> 
+	                            	<?php foreach($result as $res) : ?>
+		                            <tr>
+		                                <td><?php echo $res['id_alat']; ?></td>
+		                        		<td><?php echo $res['nama_institusi']; ?></td>
+		                                <td><?php echo $res['nomor_telepon']; ?></td>
+		                                <td><?php echo $res['tanggal_mulai_perbaikan']; ?></td>
+		                                <td><?php echo $res['estimasi_selesai_perbaikan']; ?></td>
+		               					<td align="center"><input type="checkbox" name="check[]" value="<?php echo $res['id_alat']."|".$res['nama_institusi']."|".$res['tanggal_mulai_perbaikan']; ?>"></td>
+		                            </tr>
+		                            <?php endforeach; ?>
+	                                
+	                            </tbody>
+	                    </table>
+	                    <input class = 'span1 btn btn-default' id='button_post' type = 'submit' name="update" value='Update'/>
+	                </form>
                 </div>
 
             </div>
