@@ -9,7 +9,7 @@
 
 		if(userCheck($conn,$_POST['id'])){
             $kodealat = mysqli_real_escape_string($conn,$_POST["kode-alat"]);
-            $tanggal= 55555;
+            $tanggal= date("Y-m-d",time());
             if(isset($_POST["tanggal-pinjam"])){
                 $tanggal = $_POST["tanggal-pinjam"];
             }
@@ -81,12 +81,16 @@
                 foreach($results as $result){
                     $mulai = intval(substr($result['tanggal_rencana_peminjaman'],0,4))*365+intval(substr($result['tanggal_rencana_peminjaman'],5,2))*30+intval(substr($result['tanggal_rencana_peminjaman'],8,2));
                     $selesai = intval(substr($result['tanggal_rencana_pengembalian'],0,4))*365+intval(substr($result['tanggal_rencana_pengembalian'],5,2))*30+intval(substr($result['tanggal_rencana_pengembalian'],8,2));
-
                     if((($waktumulai<$mulai) and ($waktuselesai<$mulai)) or (($waktumulai>$selesai) and ($waktuselesai>$selesai))){
-                        //nothing
+                        //NOTHING
                     }
                     else{
-                        $available = false;
+                        if(strcmp($_POST['id'],$result['id_user'])==0){
+                            mysqli_query($conn, "DELETE FROM booking WHERE id_user = '$result[id_user]' AND id_alat='$kodealat' AND tanggal_rencana_peminjaman='$result[tanggal_rencana_peminjaman]'");
+                        }
+                        else{
+                            $available = false;
+                        }
                     }
                 }
             }

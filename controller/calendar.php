@@ -48,7 +48,7 @@ function markdate(&$booked,$results,$num_days,$month,$pengecekkan){
                 $alat = $result['id_alat'];
 
                 for ($i = $tanggal_pinjam; $i <= $tanggal_kembali; $i++) {
-                    $booked[$i - 1].='<p>'.$alat.' : dipinjam <p>';
+                    $booked[$i - 1].='<p>'.$alat.' : dipinjam oleh '.$result['id_user'].'<p>';
                 }
             }
         }
@@ -73,7 +73,7 @@ function markdate(&$booked,$results,$num_days,$month,$pengecekkan){
                 $alat = $result['id_alat'];
 
                 for ($i = $tanggal_pinjam; $i <= $tanggal_kembali; $i++) {
-                    $booked[$i - 1] .= '<p>'.$alat.' : dibooking <p>';
+                    $booked[$i - 1] .= '<p>'.$alat.' : dibooking oleh '.$result['id_user'].' <p>';
                 }
             }
         }
@@ -98,7 +98,7 @@ function markdate(&$booked,$results,$num_days,$month,$pengecekkan){
                 $alat = $result['id_alat'];
 
                 for ($i = $tanggal_perbaikan; $i <= $tanggal_kembali; $i++) {
-                    $booked[$i - 1] .= '<p>'.$alat.' : diperbaiki <p>';
+                    $booked[$i - 1] .= '<p>'.$alat.' : diperbaiki oleh '.$result['nama_institusi'].'<p>';
                 }
             }
         }
