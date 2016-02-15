@@ -67,6 +67,9 @@
                     if((($waktumulai<$mulai) and ($waktuselesai<$mulai)) or (($waktumulai>$selesai) and ($waktuselesai>$selesai))){
                         //nothing
                     }
+                    else if($result['tanggal_pengembalian']==NULL){
+                        //nothing barang telah dikelmbalikan
+                    }
                     else{
                         $available = false;
                     }
@@ -103,6 +106,9 @@
 
                     if((($waktumulai<$mulai) and ($waktuselesai<$mulai)) or (($waktumulai>$selesai) and ($waktuselesai>$selesai))){
                         //nothing
+                    }
+                    else if($result['tanggal_selesai_perbaikan']==NULL){
+                        //nothing barang telah dikelmbalikan
                     }
                     else{
                         $available = false;
