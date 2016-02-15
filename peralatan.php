@@ -1,10 +1,9 @@
 <?php 
         include "controller/config.php";
         $conn = connect_database();
-        $namaalat = mysql_real_escape_string($_POST['namaalat2']);        
         if(isset($_POST["Cari"]))
         {
-            echo "TEST";
+            $namaalat = mysql_real_escape_string($_POST['namaalat2']);  
             $sql = "SELECT * FROM `alat` WHERE nama_alat LIKE '%" . $namaalat . "%';";
             
         }
