@@ -69,7 +69,7 @@ function isAvailable($conn, $kodealat, $tanggalmulai, $tanggalselesai) {
     }
 
     function tambahPerbaikan() {
-        //include "config.php";
+        include "config.php";
         $conn = connect_database();
 
         $sql = "SELECT * FROM `teknisi` WHERE `nama_institusi`='".$_POST['institusi']."'";
@@ -101,7 +101,7 @@ function isAvailable($conn, $kodealat, $tanggalmulai, $tanggalselesai) {
     }
 
     function pengembalian() {
-        //include "config.php";
+        include "config.php";
         $conn = connect_database();
         if(!empty($_POST["check"])) {
                 foreach ($_POST["check"] as $check):
@@ -127,6 +127,6 @@ function isAvailable($conn, $kodealat, $tanggalmulai, $tanggalselesai) {
         else {
             echo "Tidak ada peralatan yang dikembalikan.<br>";
         }
-        echo '<a href="../pengembalian.php"> Kembali ke halaman Pengembalian</a>';
+        echo '<a href="../perbaikan.php"> Kembali ke halaman Perbaikan</a>';
     }
 ?>
