@@ -14,7 +14,7 @@
     <body>
         <div id="container" class="special-pad">
             <div id="header">
-                <?php require_once 'navigation_bar.php'?>
+                <?php require_once 'navigation_bar.php' ?>
             </div>
             <div id="content" class="flex">
 
@@ -80,21 +80,21 @@
                                 require_once 'controller/perbaikan.php';
                                 $conn = connect_database();
                                 if(isset($_GET['nama'])) {
-                                    echo $_GET['nama'];
                                    $results = cariAlat($conn, $_GET['nama']);
                                 } else {
                                     $results = cariAlat($conn, "semua");
                                 }
                             ?>
                             <tbody> 
-                            	<?php foreach($results as $res) : ?>
+                            	<?php foreach($results as $result) : ?>
+                                <?php echo "ok" ?>
 	                            <tr>
-	                                <td><?php echo $res['id_alat']; ?></td>
-	                        		<td><?php echo $res['nama_institusi']; ?></td>
-	                                <td><?php echo $res['nomor_telepon']; ?></td>
-	                                <td><?php echo $res['tanggal_mulai_perbaikan']; ?></td>
-	                                <td><?php echo $res['estimasi_selesai_perbaikan']; ?></td>
-	               					<td align="center"><input type="checkbox" name="check[]" value="<?php echo $res['id_alat']."|".$res['nama_institusi']."|".$res['tanggal_mulai_perbaikan']; ?>"></td>
+	                                <td><?php echo $result['id_alat']; ?></td>
+	                        		<td><?php echo $result['nama_institusi']; ?></td>
+	                                <td><?php echo $result['nomor_telepon']; ?></td>
+	                                <td><?php echo $result['tanggal_mulai_perbaikan']; ?></td>
+	                                <td><?php echo $result['estimasi_selesai_perbaikan']; ?></td>
+	               					<td align="center"><input type="checkbox" name="check[]" value="<?php echo $result['id_alat']."|".$result['nama_institusi']."|".$result['tanggal_mulai_perbaikan']; ?>"></td>
 	                            </tr>
 	                            <?php endforeach; ?>
                                 
