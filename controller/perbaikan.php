@@ -71,7 +71,7 @@ function isAvailable($conn, $kodealat, $tanggalmulai, $tanggalselesai) {
     }
 
     function tambahPerbaikan() {
-        include "config.php";
+        //include "config.php";
         $conn = connect_database();
 
         $sql = "SELECT * FROM `teknisi` WHERE `nama_institusi`='".$_POST['institusi']."'";
@@ -103,7 +103,7 @@ function isAvailable($conn, $kodealat, $tanggalmulai, $tanggalselesai) {
     }
 
     function pengembalian() {
-        include "config.php";
+        //include "config.php";
         $conn = connect_database();
         if(!empty($_POST["check"])) {
                 foreach ($_POST["check"] as $check):

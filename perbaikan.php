@@ -42,7 +42,8 @@
                     <div class="s-alat">
 
                         <?php
-                            require_once 'controller/config.php'; require_once'controller/peralatan.php';
+                            require_once 'controller/config.php';
+                            require_once'controller/peralatan.php';
                             $conn = connect_database();
                             $results = queryNamaAlat($conn);
                             mysqli_close($conn);

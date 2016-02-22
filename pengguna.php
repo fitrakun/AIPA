@@ -31,6 +31,24 @@
             </div>
 
             <div id="content">
+                <div class="col-sm-3">
+                    <h3>Tambah Pengguna</h3>
+                    <form name ='form_tambah_pengguna' action='controller/pengguna.php' method = 'post'>
+                        <h4>ID Pengguna</h4>
+                        <super>Nomor Identitas Pengguna</super>
+                        <input id="iduser" class="span4 form-control" type = 'number' name = 'iduser' placeholder = 'ID Pengguna' required/>
+                        <h4>Nama Pengguna</h4>
+                        <super>Nama pengguna/nama institusi</super>
+                        <input id="namauser" class="span4 form-control" type = 'text' name = 'namauser' placeholder = 'Nama Pengguna' required/>
+                        <h4>Kategori Civitas</h4>
+                        <select class="form-control" name="kategori" id="kategori">
+                            <option value="mahasiswa">mahasiswa</option>
+                            <option value="dosen">dosen</option>
+                            <option value="institusi">institusi </option>
+                        </select>
+                        <input class='span1 btn btn-default btn-add' id='button_post' type='submit' value="Tambahkan" name="Tambahkan"/>
+                    </form>
+                </div>
                 <div class="col-sm-9 list">
                     <h3 class="span1">List Pengguna</h3>
                     <div class="s-alat">
@@ -65,24 +83,7 @@
                             </tbody>
                     </table>
                 </div>
-                 <div class="col-sm-3">
-                    <h3>Tambah Pengguna</h3>
-                    <form name ='form_tambah_pengguna' action='controller/pengguna.php' method = 'post'>
-                        <h4>ID Pengguna</h4>
-                        <super>Nomor Identitas Pengguna</super>
-                        <input id="iduser" class="span4 form-control" type = 'number' name = 'iduser' placeholder = 'ID Pengguna' required/>
-                        <h4>Nama Pengguna</h4>
-                        <super>Nama pengguna/nama institusi</super>
-                        <input id="namauser" class="span4 form-control" type = 'text' name = 'namauser' placeholder = 'Nama Pengguna' required/>
-                        <h4>Kategori Civitas</h4>
-                            <select class="form-control" name="kategori" id="kategori">
-                                <option value="mahasiswa">mahasiswa</option>
-                                <option value="dosen">dosen</option>
-                                <option value="institusi">institusi </option>
-                            </select>
-                        <input class='span1 btn btn-default btn-add' id='button_post' type='submit' value="Tambahkan" name="Tambahkan"/>
-                    </form>
-                </div>
+
             </div>
         </div>
     </body>

@@ -30,6 +30,25 @@
                 <?php require_once 'navigation_bar.php'?>
             </div>
             <div id="content">
+
+                <div class="col-sm-3">
+                    <h3>Tambah Peralatan</h3>
+                    <form id='form_peralatan' action='controller/peralatan.php' method = 'post'>
+                        <h5>ID Alat</h5>
+                        <input id="idalat" pattern="[A-Z]{3}[0-9]{3}" class="span4 form-control" type = 'text' name = 'idalat' placeholder = 'ID Alat' required/>
+                        <h5>Nama Alat</h5>
+                        <input id="namaalat" maxlength="50" class="span4 form-control" type = 'text' name = 'namaalat' placeholder = 'Nama Alat' required/>
+                        <h5>Status</h5>
+                        <select class="form-control" name="status" id="status">
+                            <option value="normal">normal</option>
+                            <option value="rusak">rusak</option>
+                        </select>
+                        <h5>Lokasi</h5>
+                        <input id="lokasi" maxlength="20" class="span4 form-control" type = 'text' name = 'lokasi' placeholder = 'Lokasi' required/>
+                        <input class='span1 btn btn-default btn-add' id='button_post' type='submit' value="Tambahkan" name="Tambahkan"/>
+                    </form>
+                </div>
+
                 <div class="col-sm-9 list">
                     <h3 class="span1">List Peralatan</h3>
                     <div class="s-alat">
@@ -66,23 +85,7 @@
                             </tbody>
                     </table>
                 </div>
-                <div class="col-sm-3">
-                    <h3>Tambah Peralatan</h3>
-                    <form id='form_peralatan' action='controller/peralatan.php' method = 'post'>
-                        <h5>ID Alat</h5>
-                        <input id="idalat" pattern="[A-Z]{3}[0-9]{3}" class="span4 form-control" type = 'text' name = 'idalat' placeholder = 'ID Alat' required/>
-                        <h5>Nama Alat</h5>
-                        <input id="namaalat" maxlength="50" class="span4 form-control" type = 'text' name = 'namaalat' placeholder = 'Nama Alat' required/>
-                        <h5>Status</h5>
-                            <select class="form-control" name="status" id="status">
-                                <option value="normal">normal</option>
-                                <option value="rusak">rusak</option>
-                            </select>
-                        <h5>Lokasi</h5>
-                        <input id="lokasi" maxlength="20" class="span4 form-control" type = 'text' name = 'lokasi' placeholder = 'Lokasi' required/>
-                        <input class='span1 btn btn-default btn-add' id='button_post' type='submit' value="Tambahkan" name="Tambahkan"/>
-                    </form>
-                </div>
+
             </div>
         </div>
     </body>

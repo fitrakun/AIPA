@@ -54,6 +54,8 @@
 
 	function isAvailable($conn, $kodealat, $tanggalmulai, $tanggalselesai) {
         $available = true;
+        $hapusbooking = false;
+        $rencanapinjam = '';
         $waktumulai = intval(substr($tanggalmulai,0,4))*365+intval(substr($tanggalmulai,5,2))*30+intval(substr($tanggalmulai,8,2));
         $waktuselesai = intval(substr($tanggalselesai,0,4))*365+intval(substr($tanggalselesai,5,2))*30+intval(substr($tanggalselesai,8,2));
 
@@ -86,7 +88,8 @@
                     }
                     else{
                         if(strcmp($_POST['id'],$result['id_user'])==0){
-                            mysqli_query($conn, "DELETE FROM booking WHERE id_user = '$result[id_user]' AND id_alat='$kodealat' AND tanggal_rencana_peminjaman='$result[tanggal_rencana_peminjaman]'");
+                            $rencanapinjam = $result['tanggal_rencana_peminjaman'];
+                            $hapusbooking = true;
                         }
                         else{
                             $available = false;
@@ -94,9 +97,17 @@
                     }
                 }
             }
+            if($hapusbooking and $available){
+                $id = $_POST['id'];
+                /*
+                echo $id." ".$kodealat;
+                echo $rencanapinjam;*/
+                echo "Booking dihapus";
+
+                mysqli_query($conn, "DELETE FROM booking WHERE id_user = '$id' AND id_alat='$kodealat' AND tanggal_rencana_peminjaman= '$rencanapinjam'");
+            }
             mysqli_free_result($results);
         }
-
 
         if($available){
             $results = mysqli_query($conn, "SELECT * FROM perbaikan WHERE id_alat = '$kodealat' AND tanggal_selesai_perbaikan IS NULL;");
