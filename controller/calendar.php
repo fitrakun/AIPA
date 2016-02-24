@@ -106,7 +106,7 @@ function markdate(&$booked,$results,$num_days,$month,$pengecekkan){
 }
 
 /* draws a calendar */
-function draw_calendar($month,$year,$alat){
+function draw_calendar($conn, $month,$year,$alat){
 
     /* draw table */
     $calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
@@ -129,8 +129,6 @@ function draw_calendar($month,$year,$alat){
     $now = $month + $year *12;
 
     //PENGECEKKAN STATUS UNTUK KEPENTINGAN KALENDER
-    include "controller/config.php";
-    $conn = connect_database();
     //booking
     $result = mysqli_query($conn,"SELECT * FROM booking NATURAL JOIN alat where nama_alat = '$alat' and ((year(tanggal_rencana_peminjaman)*12 + month(tanggal_rencana_peminjaman)) <= '$now') and ((year(tanggal_rencana_pengembalian)*12 + month(tanggal_rencana_pengembalian)) >= '$now')");
     if(mysqli_num_rows($result)>0){
@@ -199,6 +197,7 @@ function draw_calendar($month,$year,$alat){
 
     /* end the table */
     $calendar.= '</table>';
+
 
     /* all done, return result */
     return $calendar;

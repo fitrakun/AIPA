@@ -23,18 +23,27 @@
     <body>
         <div id = "container">
             <div id  = "header">
-                <?php require_once 'navigation_bar.php'?>
+                <?php require_once 'navigation_bar.php' ?>
             </div>
 
             <div id="content" class="flex">
                 <div id = "calendar">
                     <?php
-                    require 'controller/calendar.php';
-                    $month = date("m");
-                    $Month = date("M");
-                    $year = date("Y");
-                    $alat = 'Microphone';
+                        require 'controller/calendar.php';
+                        $month = date("m");
+                        $Month = date("M");
+                        $year = date("Y");
+                        $alat = 'Microphone';
                     ?>
+
+                    <?php
+                        require_once 'controller/config.php'; require_once'controller/peralatan.php';
+                        $conn = connect_database();
+
+                        $results = queryNamaAlat($conn);
+
+                    ?>
+
                     <form name = 'form_navigasi' action="index.php" method ='POST'>
                         <div class = "form-inline">
                             <h4>Pencarian Ketersediaan Alat</h4>
@@ -51,7 +60,11 @@
                                 <option value="<?php echo $year+1 ?>"><?php echo $year+1 ?></option>
                                 <option value="<?php echo $year+2 ?>"><?php echo $year+2 ?></option>
                             </select>
-                            <input class = "span4 form-control" type ='text' name = 'alat' placeholder="nama alat"/>
+                            <select class = "span4 form-control" name="alat">
+                                <?php foreach($results as $result) : ?>
+                                    <option value="<?php echo $result['nama_alat']; ?>"><?php echo $result['nama_alat']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
                             <input class = 'span4 form-control button' name = 'refresh' type = 'submit' value = 'Refresh'/>
                         </div>
                     </form>
@@ -65,7 +78,7 @@
 
                     echo '<h2>' . $Month . ' ' . $year . '</h2>';
                     echo '<h4>Nama Alat : ' .$alat. '</h4>';
-                    echo draw_calendar($month, $year, $alat);
+                    echo draw_calendar($conn, $month, $year, $alat);
                     ?>
                 </div>
 

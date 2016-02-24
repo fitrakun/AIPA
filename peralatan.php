@@ -27,7 +27,7 @@
     <body>
         <div id="container" class="special-pad">
             <div id="header">
-                <?php require_once 'navigation_bar.php'?>
+                <?php require_once 'navigation_bar.php' ?>
             </div>
             <div id="content">
 
@@ -48,7 +48,13 @@
                         <input class='span1 btn btn-default btn-add' id='button_post' type='submit' value="Tambahkan" name="Tambahkan"/>
                     </form>
                 </div>
+                <?php
+                    require_once'controller/peralatan.php';
+                    
+                    $results = queryNamaAlat($conn);
 
+                    mysqli_close($conn);
+                ?>
                 <div class="col-sm-9 list">
                     <h3 class="span1">List Peralatan</h3>
                     <div class="s-alat">
@@ -56,7 +62,11 @@
                             <div class="form-group">
                                 <label for="namaalat" class="span1">Nama Alat</label>
                                 <div class="form-inline">
-                                    <input id="namaalat2" class="span1 form-control" type = 'text' name = 'namaalat2' placeholder = 'Nama Alat' required/>
+                                    <select class = "span1 form-control" name="namaalat2">
+                                        <?php foreach($results as $res) : ?>
+                                            <option value="<?php echo $res['nama_alat']; ?>"><?php echo $res['nama_alat']; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                     <input class='span1 btn btn-default' id='button_post' type='submit' name="Cari" value="Cari"/>
                                 </div>
                             </div>
